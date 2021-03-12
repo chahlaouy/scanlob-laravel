@@ -2,9 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,34 +24,43 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/nos-offres', [HomeController::class, 'products']);
-Route::get('/qr-code', [UserAuthController::class, 'qrCode'])->name('auth.qr-code');
-Route::post('/create', [UserAuthController::class, 'createUser'])->name('auth.create');
-Route::post('/check', [UserAuthController::class, 'check'])->name('auth.check');
+
+// User Routes
+
+Route::get('/qr-code', [UserAuthController::class, 'qrCode'])->name('user.qr-code');
+Route::post('/create', [UserAuthController::class, 'createUser'])->name('user.create');
+Route::post('/check', [UserAuthController::class, 'check'])->name('user.check');
+
+// Admin Routes
+
+Route::post('/admin/check', [AdminAuthController::class, 'check'])->name('admin.check');
 
 Route::group(['middleware' => 'isLogged'], function(){
     
     //Routes for User
     
-    Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('auth.logout');
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/profile', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/payment', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('auth.logout');
     
     // Routes for admin
     
-    Route::get('/admin/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/manage-offre', [AdminController::class, 'index']);
+    Route::get('/admin/manage-commands', [AdminController::class, 'index']);
+    Route::get('/deconnexion', [AdminAuthController::class, 'logout']);
 });
 
 Route::group(['middleware' => 'alreadyLoggedIn'], function(){
 
     // Routes for User
     
-    Route::get('/connexion', [UserAuthController::class, 'login'])->name('auth.login');
-    Route::get('/inscription', [UserAuthController::class, 'register'])->name('auth.register');
+    Route::get('/connexion', [UserAuthController::class, 'login'])->name('user.login');
+    Route::get('/inscription', [UserAuthController::class, 'register'])->name('user.register');
     
-    // Routes Fro Admin
+    // Routes for Admin
     
-    Route::get('/admin/connexion', [UserAuthController::class, 'login'])->name('auth.login');
-    Route::get('/admin/inscription', [UserAuthController::class, 'register'])->name('auth.register');
-    
+    Route::get('/admin/connexion', [AdminAuthController::class, 'login'])->name('admin.login');
+
 });

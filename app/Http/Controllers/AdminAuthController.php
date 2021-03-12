@@ -4,55 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\User;
+
 class AdminAuthController extends Controller
 {
+    
     function login(){
-
-        return view('auth.login');
+        return view('auth.admin-login');
     }
 
-    function register(){
-
-        return view('auth.register');
-    }
-    function createUser(Request $request){
-        
-        //Validating request
-        $request->validate([
-            'username'  =>  'required',
-            'email'  =>  'required | email | unique:users',
-            'password'  =>  'required | min:8',
-            'confirm-password'  =>  'required | min:4 | max:12',
-        ]);
-
-        // if form validated successfully
-
-        //Creating a blank user
-        $user = new User;
-        
-        // Fill the Use Data
-        $user->username     =       $request->username;
-        $user->email        =       $request->email;
-        $user->password     =       Hash::make($request->password);
-
-        // Save The User
-        $query = $user->save();
-
-        // Using query builder
-        // $query = DB::table('users')
-        //             ->insert([
-        //                 'username'  =>  $request->username,
-        //                 'email'  =>  $request->email,
-        //                 'password'  =>  Hash::make($request-password),
-        //             ]);
-        // Check the nothing goes wrong
-        if ($query){
-
-            return back()->with('success', 'you have been successfully registred');
-        } else {
-            return back()->with('fail', 'Sorry something went wrong');
-        }
-    }
 
     function check(Request $request){
 
@@ -76,7 +39,7 @@ class AdminAuthController extends Controller
                 // redirect to user dashboard
 
                 $request->session()->put('loggedUserId', $user->id);
-                return redirect('dashboard');
+                return redirect('admin/dashboard');
 
             }else{
                 return back()->with('fail', 'Invalid Password');
@@ -91,7 +54,7 @@ class AdminAuthController extends Controller
 
         if(session()->has('loggedUserId')){
             session()->pull('loggedUserId');
-            return redirect('connexion');
+            return redirect('admin/connexion');
         }
     }
 }

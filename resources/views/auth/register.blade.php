@@ -17,7 +17,7 @@
     -->
     <section class="flex items-center justify-center h-screen w-full text-gray-600">
         <div class="bg-white shadow-2xl rounded-xl w-96 p-8">
-            <form action="{{route ('auth.create')}}" method="POST">
+            <form action="{{route ('user.create')}}" method="POST">
                 @csrf
                 <div>
                     <h1 class="text-center capitalize tracking-wide leading-loose text-2xl text-gray-800">Inscription</h1>

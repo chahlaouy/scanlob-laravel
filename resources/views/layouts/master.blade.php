@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <title>
         @yield('title')
     </title>
@@ -128,5 +128,5 @@
             </div>
         </div>
     </footer>
-    <script src="./assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
