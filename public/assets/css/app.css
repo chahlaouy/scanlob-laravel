@@ -586,6 +586,225 @@ video {
   }
 }
 
+.form-input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #fff;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  font-size: [object Object];
+  line-height: 1.5;
+}
+
+.form-input::-moz-placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.form-input:-ms-input-placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.form-input::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.form-textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #fff;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  font-size: [object Object];
+  line-height: 1.5;
+}
+
+.form-textarea::-moz-placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.form-textarea:-ms-input-placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.form-textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.form-multiselect {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #fff;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  font-size: [object Object];
+  line-height: 1.5;
+}
+
+.form-multiselect:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3e%3cpath d='M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z'/%3e%3c/svg%3e");
+}
+
+.form-select::-ms-expand {
+  color: #6b7280;
+  border: none;
+}
+
+@media not print {
+  .form-select::-ms-expand {
+    display: none;
+  }
+}
+
+@media print and (-ms-high-contrast: active), print and (-ms-high-contrast: none) {
+  .form-select {
+    padding-right: 0.75rem;
+  }
+}
+
+.form-select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-print-color-adjust: exact;
+          color-adjust: exact;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  padding-top: 0.5rem;
+  padding-right: 2.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  font-size: [object Object];
+  line-height: 1.5;
+  background-position: right 0.5rem center;
+  background-size: 1.5em 1.5em;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.form-checkbox:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+  border-color: transparent;
+  background-color: currentColor;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media not print {
+  .form-checkbox::-ms-check {
+    color: transparent;
+    background: inherit;
+    border-color: inherit;
+    border-radius: inherit;
+  }
+}
+
+.form-checkbox {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-print-color-adjust: exact;
+          color-adjust: exact;
+  display: inline-block;
+  vertical-align: middle;
+  background-origin: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  flex-shrink: 0;
+  height: 1em;
+  width: 1em;
+  color: #3b82f6;
+  background-color: #fff;
+}
+
+.form-checkbox:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.form-radio:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  border-color: transparent;
+  background-color: currentColor;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media not print {
+  .form-radio::-ms-check {
+    color: transparent;
+    background: inherit;
+    border-color: inherit;
+    border-radius: inherit;
+  }
+}
+
+.form-radio {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-print-color-adjust: exact;
+          color-adjust: exact;
+  display: inline-block;
+  vertical-align: middle;
+  background-origin: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  flex-shrink: 0;
+  border-radius: 100%;
+  height: 1em;
+  width: 1em;
+  color: #3b82f6;
+  background-color: #fff;
+}
+
+.form-radio:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
@@ -31181,11 +31400,10 @@ video {
 
   src: url("../fonts/ginger-regular.eot");
 
-  src: url("../fonts/ginger-regular.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/ginger-regular.woff") format("woff"),
-    url("../fonts/ginger-regular.ttf") format("truetype"),
-    url("../fonts/ginger-regular.svg#ginger-bold") format("svg");
+  src: url("../fonts/ginger-regular.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/ginger-regular.woff") format("woff"),
+        url("../fonts/ginger-regular.ttf") format("truetype"),
+        url("../fonts/ginger-regular.svg#ginger-bold") format("svg");
 
   font-weight: normal;
 
@@ -31309,11 +31527,11 @@ h2 {
 .bg-gr-primary {
   background: rgb(65, 88, 208);
   background: linear-gradient(
-    43deg,
-    rgba(65, 88, 208, 1) 0%,
-    rgba(200, 80, 192, 1) 50%,
-    rgba(255, 204, 112, 1) 100%
-  );
+        43deg,
+        rgba(65, 88, 208, 1) 0%,
+        rgba(200, 80, 192, 1) 50%,
+        rgba(255, 204, 112, 1) 100%
+    );
 }
 
 .bg-gr-secondary {
@@ -31328,10 +31546,10 @@ h2 {
 .bg-gr-blue {
   background: rgb(63, 94, 251);
   background: radial-gradient(
-    circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(70, 83, 252, 1) 100%
-  );
+        circle,
+        rgba(63, 94, 251, 1) 0%,
+        rgba(70, 83, 252, 1) 100%
+    );
 }
 
 .main-color {
@@ -31489,7 +31707,7 @@ html.has-scroll-dragging {
 }
 
 .custom-file-input::before {
-  content: '+';
+  content: "+";
   display: block;
   margin-top: 1.5rem;
   text-align: center;
@@ -31513,6 +31731,96 @@ html.has-scroll-dragging {
 
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+/* Google maps */
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+#target {
+  width: 345px;
 }
 
 @media (min-width: 640px) {

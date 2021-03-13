@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\UserExtraInfo;
+
 class UserController extends Controller
 {
     function index(){
@@ -41,5 +43,38 @@ class UserController extends Controller
             'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
         ];
         return view('user.qr-code');
+    }
+
+    function addUserInfo(Request $request){
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'addmore.*.year' => 'required',
+            'addmore.*.level' => 'required',
+            'skills.*' => 'required',
+            'interet.*' => 'required',
+            'language.*' => 'required',
+            'summary' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'address' => 'required'
+        ]);
+
+    
+
+        $imageName = time().'.'.$request->image->extension();  
+
+        $request->image->move(public_path('images'), $imageName);
+
+        /* Store $imageName name in DATABASE from HERE */
+
+    
+
+        return back()
+
+            ->with('success','You have successfully upload image.')
+
+            ->with('image',$imageName); 
+
     }
 }
