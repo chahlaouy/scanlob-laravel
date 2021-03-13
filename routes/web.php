@@ -42,14 +42,15 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/profile', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/payment', [UserController::class, 'index'])->name('user.dashboard');
-    Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('user.logout');
     
     // Routes for admin
     
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/manage-offre', [AdminController::class, 'index']);
-    Route::get('/admin/manage-commands', [AdminController::class, 'index']);
-    Route::get('/deconnexion', [AdminAuthController::class, 'logout']);
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/gestion-offre', [AdminController::class, 'offers'])->name('admin.offers');
+    Route::get('/admin/gestion-commands', [AdminController::class, 'index'])->name('admin.commands');
+    Route::get('/admin/deconnexion', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
 Route::group(['middleware' => 'alreadyLoggedIn'], function(){
@@ -62,5 +63,6 @@ Route::group(['middleware' => 'alreadyLoggedIn'], function(){
     // Routes for Admin
     
     Route::get('/admin/connexion', [AdminAuthController::class, 'login'])->name('admin.login');
+    
 
 });

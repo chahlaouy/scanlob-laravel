@@ -42,16 +42,14 @@
             </li>
         </ul>
     </div>  
-    <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-8 w-full">
+    <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-12 w-full">
         <div class="flex">
-            <div class="flex-1 p-2">
-                <div class="bg-white rounded-2xl shadow-2xl">
-                    <canvas id="canvas_offers" height="400" width="600"></canvas>
-                </div>
+            <div class="flex-1">
+
             </div>
-            <div class="flex-1 p-2">
+            <div class="flex-1">
                 <div class="bg-white rounded-2xl shadow-2xl">
-                    <canvas id="canvas_users" height="400" width="600"></canvas>
+                    <canvas id="canvas" height="400" width="600"></canvas>
                 </div>
             </div>
         </div>
@@ -60,11 +58,10 @@
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
-    var month = <?php echo $month; ?>;
-
+    var year = <?php echo $year; ?>;
     var user = <?php echo $user; ?>;
-    var lineChartData = {
-        labels: month,
+    var barChartData = {
+        labels: year,
         datasets: [{
             label: 'utilisateur',
             backgroundColor: "pink",
@@ -72,44 +69,10 @@
         }]
     };
 
-    var offer = ['14', '12', '0', '12', '45', '47']
-    var barChartData = {
-        labels: month,
-        datasets: [{
-            label: 'offres',
-            backgroundColor: "blue",
-            data: offer
-        }]
-    };
-
     window.onload = function() {
-
-        // Chart Users
-
-        var ctx_users = document.getElementById("canvas_users").getContext("2d");
-        window.myLine = new Chart(ctx_users, {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx, {
             type: 'line',
-            data: lineChartData,
-            options: {
-                elements: {
-                    rectangle: {
-                        borderWidth: 2,
-                        borderColor: '#c1c1c1',
-                        borderSkipped: 'bottom'
-                    }
-                },
-                responsive: true,
-                title: {
-                    display: true,
-                    text: "Membre mensuelle de l'utilisateur"
-                }
-            }
-        });
-
-        // Chart Offers
-        var ctx_offers = document.getElementById("canvas_offers").getContext("2d");
-        window.myBar = new Chart(ctx_offers, {
-            type: 'bar',
             data: barChartData,
             options: {
                 elements: {
@@ -122,7 +85,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: "Membre mensuelle de l'offres"
+                    text: "Membre annuel de l'utilisateur"
                 }
             }
         });

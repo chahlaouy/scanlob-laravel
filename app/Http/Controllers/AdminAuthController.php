@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\User;
+use App\Models\Admin;
 
 class AdminAuthController extends Controller
 {
@@ -27,26 +27,26 @@ class AdminAuthController extends Controller
 
         // if form is validated successfully
 
-        // get user from db
+        // get admin from db
 
-        $user   =   User::where('email', '=', $request->email)->first();
+        $admin   =   Admin::where('email', '=', $request->email)->first();
         
-        if($user){
+        if($admin){
 
-            //if password user matches password request
-            if (Hash::check($request->password, $user->password)){
+            //if password admin matches password request
+            if (Hash::check($request->password, $admin->password)){
 
-                // redirect to user dashboard
+                // redirect to admin dashboard
 
-                $request->session()->put('loggedUserId', $user->id);
+                $request->session()->put('loggedUserId', $admin->id);
                 return redirect('admin/dashboard');
 
             }else{
-                return back()->with('fail', 'Invalid Password');
+                return back()->with('fail', 'Mot de passe erroné');
             }
 
         }else{
-            return back()->with('fail', 'no account found for this email');
+            return back()->with('fail', 'aucun compte trouvé pour cet e-mail');
         }
     }
 
