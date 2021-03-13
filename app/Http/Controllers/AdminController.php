@@ -12,22 +12,14 @@ class AdminController extends Controller
     function index(){ 
 
 
-        $monthKeyValue = [
-            'janvier' => '01',
-            'fevrier' => '02',
-            'fevrier' => '3',
-            'fevrier' => '04',
-            'fevrier' => '05',
-            'fevrier' => '06'
-        ];
+        $monthKeyValue = ['01','02','03','04','05','06', '07','08','09','10','11','12'];
 
-        $month = ['janvier','janvier','janvier','janvier','janvier','janvier'];
+        $month = ['janvier','février','mars','avril','may','juin','juillet','aout','septembre','octobre','novembre','décembre'];
 
         $user = [];
-        foreach ($month as $key => $value) {
-            $user[] = User::where(\DB::raw("DATE_FORMAT(created_at, '%M')"),$value)->count();
+        foreach ($monthKeyValue as $key => $value) {
+            $user[] = User::where(\DB::raw("DATE_FORMAT(created_at, '%m')"),$value)->count();
         }
-
 
         $loggedUserInfo  =  Admin::where('id', '=', session('loggedUserId'))->first();
 

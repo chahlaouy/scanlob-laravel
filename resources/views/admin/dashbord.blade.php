@@ -44,14 +44,36 @@
     </div>  
     <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-8 w-full">
         <div class="flex">
-            <div class="flex-1 p-2">
-                <div class="bg-white rounded-2xl shadow-2xl">
-                    <canvas id="canvas_offers" height="400" width="600"></canvas>
+            <div class="p-2 text-center">
+                <div class="bg-white rounded-2xl shadow-2xl w-64 h-full px-2 py-8">
+                    <div class="text-2xl capitalize leading-loose tracking-wide">
+                        nombre total d'utilisateurs
+                    </div>
+                    <div class="text-4xl capitalize leading-loose tracking-wide text-indigo-600">
+                        255
+                    </div>
                 </div>
             </div>
             <div class="flex-1 p-2">
                 <div class="bg-white rounded-2xl shadow-2xl">
-                    <canvas id="canvas_users" height="400" width="600"></canvas>
+                    <canvas id="canvas_users" height="250" width="600"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex-1 p-2">
+                <div class="bg-white rounded-2xl shadow-2xl">
+                    <canvas id="canvas_offers" height="250" width="600"></canvas>
+                </div>
+            </div>
+            <div class="p-2 text-center">
+                <div class="bg-white rounded-2xl shadow-2xl h-full w-64 px-2 py-8">
+                    <div class="text-2xl capitalize leading-loose tracking-wide">
+                        nombre total d'offres
+                    </div>
+                    <div class="text-4xl capitalize leading-loose tracking-wide text-indigo-600">
+                        12
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,7 +94,7 @@
         }]
     };
 
-    var offer = ['14', '12', '0', '12', '45', '47']
+    var offer = ['14', '12', '0', '12', '45', '47','14', '12', '0', '12', '45', '47']
     var barChartData = {
         labels: month,
         datasets: [{
@@ -122,7 +144,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: "Membre mensuelle de l'offres"
+                    text: "Nombre mensuelle de l'offres"
                 }
             }
         });

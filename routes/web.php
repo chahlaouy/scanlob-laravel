@@ -40,8 +40,10 @@ Route::group(['middleware' => 'isLogged'], function(){
     //Routes for User
     
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
-    Route::get('/profile', [UserController::class, 'index'])->name('user.dashboard');
-    Route::get('/payment', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('/commandes', [UserController::class, 'commands'])->name('user.commands');
+    Route::get('/cartes', [UserController::class, 'cards'])->name('user.cards');
+    Route::get('/qr-code', [UserController::class, 'qrCode'])->name('user.qr-code');
     Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('user.logout');
     
     // Routes for admin

@@ -21,13 +21,25 @@ class UserController extends Controller
         $data   =   [
             'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
         ];
-        return view('user.dashbord');
+        return view('user.profile', $data);
     }
 
     function cards(){
         $data   =   [
             'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
         ];
-        return view('user.dashbord');
+        return view('user.cards');
+    }
+    function commands(){
+        $data   =   [
+            'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
+        ];
+        return view('user.commands');
+    }
+    function qrCode(){
+        $data   =   [
+            'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
+        ];
+        return view('user.qr-code');
     }
 }

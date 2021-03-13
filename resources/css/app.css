@@ -249,3 +249,37 @@ html.has-scroll-dragging {
   background-position: center center;
   background-size: cover;
 }
+
+.custom-file-input {
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: '+';
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+  width: 100%;
+  color: #f1f1f1;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 3rem;
+}
+.custom-file-input:hover::before {
+  border-color: none;
+}
+.custom-file-input:active {
+  outline: none;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}

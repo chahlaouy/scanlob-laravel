@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Dashboard
+    Profile
 @endsection
 
 @section('content')
@@ -10,13 +10,13 @@
     <div class="w-96 text-gray-600 text-sm" style="background: #e7eeed;">
         <ul>
             <li>
-                <a href="{{route('user.dashboard')}}" class="py-2 flex items-center text-indigo-600">
+                <a href="{{route('user.dashboard')}}" class="py-2 flex items-center hover:text-indigo-600">
                     <ion-icon name="apps" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{{route('user.profile')}}" class="py-2 flex items-center hover:text-indigo-600">
+                <a href="{{route('user.profile')}}" class="py-2 flex items-center text-indigo-600">
                     <ion-icon name="person" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Profile</span>
                 </a>
@@ -51,9 +51,17 @@
     <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-12 w-full">
         <div class="flex">
             <div class="bg-white rounded-2xl shadow-2xl w-96 mr-6">
-                <div class="flex p-4">
-                    <img src="./assets/images/profile.jpg" class="h-96 w-full rounded-2xl object-cover" alt="">
-                    
+                <div class="flex p-4 relative z-0">
+                    <img src="{{asset('assets/images/profile.png')}}" class="h-96 w-full rounded-2xl object-cover" alt="">
+                    {{-- <div class="absolute bottom-0 right-0 z-10 w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center">
+                        <div class="text-6xl font-bold text-gray-100">
+                            <input type="file" id="img" name="img" accept="image/*">
+                        </div>
+                    </div> --}}
+                    <div class="absolute bottom-0 right-0 z-10 w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center">
+
+                        <input type="file" class="custom-file-input" name="img" accept="image/*">
+                    </div>
                 </div>
                 <div class="p-4 text-gray-700">
                     <h1 class="tracking-wide leading-loose capitalize"> dhiflaoui siwar</h1>
