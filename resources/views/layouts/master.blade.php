@@ -25,30 +25,30 @@
             </h1>
             <ul class="flex items-center">
                 <li class="px-3">
-                    <a href="/">
+                    <a href="{{route('home')}}">
                         Acceuil
                     </a>
                 </li>
                 <li class="px-3">
-                    <a href="nos-offres">
+                    <a href="{{route('products')}}">
                         Nos Offres
                     </a>
                 </li>
                 <li class="px-3">
-                    <a href="apropos">
+                    <a href="{{route('about')}}">
                         A propos
                     </a>
                 </li>
                 <li class="px-3">
-                    <a href="contact">
+                    <a href="{{route('contact')}}">
                         Contact
                     </a>
                 </li>
-                <li class="px-3">
+                {{-- <li class="px-3">
                     <a href="actualités">
                         Actualités
                     </a>
-                </li>
+                </li> --}}
             </ul>
             {{-- <div class="w-96 text-gray-600 text-sm px-4" style="background: #e7eeed;">
                 <div class="relative text-sm flex items-center">
@@ -59,20 +59,34 @@
                  </div>
              </div> --}}
             <div class="flex text-center">
-                @if (isset($loggedUserInfo))    
-                    <button class="bg-indigo-600 px-4 py-2 text-gray-100 rounded-lg shadow-xl text-center">
-                        <ion-icon name="person" class="text-3xl"></ion-icon>
-                        <div class="flex items-center">
-                            <p class="text-sm mr-2">{{ $loggedUserInfo->username }}</p>
-                            <ion-icon name="chevron-down-circle-outline" class="text-lg"></ion-icon>
+                @if (isset($loggedUserInfo))
+                    <div class="relative">
+                        <button class="bg-indigo-600 px-4 py-2 text-gray-100 rounded-lg shadow-xl text-center focus:outline-none" onclick="myFunction()" class="dropbtn-menu-profile">
+                            <ion-icon name="person" class="text-3xl"></ion-icon>
+                            <div class="flex items-center">
+                                <p class="text-sm mr-2">{{ $loggedUserInfo->username }}</p>
+                                <ion-icon name="chevron-down-circle-outline" class="text-lg"></ion-icon>
+                            </div>
+                        </button>
+                        <div class="hidden absolute right-0 w-64 bg-white shadow text-left rounded text-gray-700" id="dropdown-menu-profile">
+                            <ul>
+                                <li class="px-4 py-2  hover:bg-gray-300 flex items-center">
+                                    <ion-icon name="apps" class="mr-1"></ion-icon>
+                                    <a href="{{route('user.dashboard')}}">Dashboard</a>
+                                </li>
+                                <li class="px-4 py-2  hover:bg-gray-300 flex items-center">
+                                    <ion-icon name="log-out" class="mr-1"></ion-icon>
+                                    <a href="{{route('user.logout')}}">Déconnexion</a>
+                                </li>
+                            </ul>
                         </div>
-                    </button>
+                    </div>  
                 @else   
-                    <a href="qr-code" class="bg-indigo-600 mr-2 px-4 py-2 text-gray-100 rounded-lg shadow-xl block">
+                    <a href="{{route('user.qr-code')}}" class="bg-indigo-600 mr-2 px-4 py-2 text-gray-100 rounded-lg shadow-xl block">
                         <ion-icon name="qr-code-outline" class="text-3xl"></ion-icon>
                         <span class="block text-sm">premier connexion</span>
                     </a>
-                    <a href="connexion" class="bg-gray-100 px-4 py-2 rounded-lg shadow-xl text-gray-700 text-center block">
+                    <a href="{{route('user.login')}}" class="bg-gray-100 px-4 py-2 rounded-lg shadow-xl text-gray-700 text-center block">
                         <ion-icon name="person-outline" class="text-3xl"></ion-icon>
                         <span class="block text-sm">Inscription/Connexion</span>
                     </a>
@@ -133,6 +147,4 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw&callback=initAutocomplete&libraries=places&v=weekly"
     async defer
     ></script>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw&libraries=places"> --}}
 </body>

@@ -47,6 +47,7 @@ class UserController extends Controller
 
     function addUserInfo(Request $request){
 
+
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'addmore.*.year' => 'required',
@@ -60,21 +61,44 @@ class UserController extends Controller
             'address' => 'required'
         ]);
 
-    
+        // dd(json_encode($request->addmore));
+        // dd($request->input());
 
         $imageName = time().'.'.$request->image->extension();  
 
-        $request->image->move(public_path('images'), $imageName);
+        $request->image->move(public_path('assets/images'), $imageName);
 
         /* Store $imageName name in DATABASE from HERE */
 
-    
+        $userExtraInfo = new UserExtraInfo;
 
-        return back()
 
-            ->with('success','You have successfully upload image.')
+        $userExtraInfo->img_url = $imageName;
+        $userExtraInfo->summary = $request->summary;
+        $userExtraInfo->address = $request->address;
+        $userExtraInfo->phone = $request->phone;
+        $userExtraInfo->gender = $request->gender;
+        $userExtraInfo->interet = $request->interet;
+        $userExtraInfo->languages = $request->language;
+        $userExtraInfo->skills = $request->skills;
+        $userExtraInfo->experience = '';
+        $userExtraInfo->certifications = '';
+        $userExtraInfo->education = $request->addmore;
+        
 
-            ->with('image',$imageName); 
+        $userExtraInfo->user_id = session('loggedUserId');
+
+        $status = $userExtraInfo->save();
+        
+        if($status){
+
+            return back()->with('success','Vous avez mis à jour votre profil avec succès.');
+
+        }else{ 
+            return back()->with('fail','Quelque chose ne va pas, veuillez réessayer plus tard.');
+        }
+
+
 
     }
 }

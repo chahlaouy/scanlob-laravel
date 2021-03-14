@@ -14,14 +14,7 @@
                     <ion-icon name="apps" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Dashboard</span>
                 </a>
-            </li>
-            <li>
-                <a href="{{route('admin.profile')}}" class="py-2 flex items-center hover:text-indigo-600">
-                    <ion-icon name="person" class="text-indigo-600 mr-2 text-lg"></ion-icon>
-                    <span class="capitalize tracking-wider leading-loose">Profile</span>
-                </a>
-            </li>
-            
+            </li> 
             <li>
                 <a href="{{route('admin.commands')}}" class="py-2 flex items-center hover:text-indigo-600">
                     <ion-icon name="card" class="text-indigo-600 mr-2 text-lg"></ion-icon>

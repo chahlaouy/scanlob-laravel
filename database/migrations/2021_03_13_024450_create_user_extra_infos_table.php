@@ -15,16 +15,18 @@ class CreateUserExtraInfosTable extends Migration
     {
         Schema::create('user_extra_infos', function (Blueprint $table) {
             $table->id();
-            $table->text('img_url');
-            $table->text('interet');
-            $table->text('education');
-            $table->text('skills');
+            $table->string('img_url');
+            $table->string('gender');
+            $table->json('interet');
+            $table->json('education');
+            $table->json('skills');
             $table->text('summary');
             $table->text('address');
-            $table->text('experience');
-            $table->text('phone');
-            $table->text('languages');
-            $table->text('certifications');
+            $table->json('experience');
+            $table->string('phone');
+            $table->json('languages');
+            $table->json('certifications');
+            $table->integer('user_id')->default(Null);
             $table->timestamps();
         });
     }

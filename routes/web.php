@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OffersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,9 @@ use App\Http\Controllers\AdminController;
 
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/nos-offres', [HomeController::class, 'products']);
+Route::get('/nos-offres', [HomeController::class, 'products'])->name('products');
+Route::get('/apropos', [HomeController::class, 'products'])->name('about');
+Route::get('/contact', [HomeController::class, 'products'])->name('contact');
 
 // User Routes
 
@@ -52,9 +55,19 @@ Route::group(['middleware' => 'isLogged'], function(){
     
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
-    Route::get('/admin/gestion-offre', [AdminController::class, 'offers'])->name('admin.offers');
-    Route::get('/admin/gestion-commands', [AdminController::class, 'index'])->name('admin.commands');
     Route::get('/admin/deconnexion', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    
+    /**Commands controller */
+    
+    Route::get('/admin/gestion-commands', [OffersController::class, 'commands'])->name('admin.commands');
+    
+    /** Offers controller */
+    
+    Route::get('/admin/gestion-offre', [OffersController::class, 'offers'])->name('admin.offers');
+    Route::get('/admin/liste-des-offres', [OffersController::class, 'offerList'])->name('admin.offers-List');
+    Route::get('/admin/ajouter-offre', [OffersController::class, 'add'])->name('admin.add-offer');
+    Route::post('/admin/creation-offre', [OffersController::class, 'create'])->name('admin.offer-create');
+    
 });
 
 Route::group(['middleware' => 'alreadyLoggedIn'], function(){

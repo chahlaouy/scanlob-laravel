@@ -32,11 +32,4 @@ class AdminController extends Controller
         ];
         return view('admin.profile', $data);
     }
-
-    function offers(){
-        $data   =   [
-            'loggedUserInfo'  =>  Admin::where('id', '=', session('loggedUserId'))->first()
-        ];
-        return view('admin.offers', $data);
-    }
 }

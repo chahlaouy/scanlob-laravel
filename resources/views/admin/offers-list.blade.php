@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Gestion des offres
+    Dashboard
 @endsection
 
 @section('content')
@@ -37,20 +37,15 @@
     </div>  
     <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-12 w-full">
         <div class="flex">
-            <div class="flex-1 p-8">
-                <div class="bg-indigo-600 rounded-2xl shadow-2xl p-12 text-center text-gray-100">
-                    <a href="{{route('admin.add-offer')}}" class="p-12" >
-                        Ajouter des offres
-                    </a>
-                </div>
+            
+            <div class="bg-indigo-600 rounded-2xl shadow-2xl py-4 text-center text-gray-100">
+                <h1 class="text-center text-4xl">Listes des offres</h1>
+     
             </div>
-            <div class="flex-1 p-8">
-                <div class="bg-indigo-600 rounded-2xl shadow-2xl p-12 text-center text-gray-100">
-                    <a href="{{route('admin.offers-List')}}" class="p-12">
-                        Gestion des Anciens offres
-                    </a>
-                </div>
+            <div class="bg-white rounded-2xl shadow-2xl p-6 text-center text-gray-700 mt-8 text-left">
+     
             </div>
+
         </div>
     </div>
      

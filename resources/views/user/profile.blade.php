@@ -48,8 +48,19 @@
             </li>
         </ul>
     </div>  
-    <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-12 w-full">
-        <form action="{{route('user.addInfo')}}" method="POST">
+    <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-12 w-full rounded">
+
+        @if (Session::get('success'))
+            <div class="bg-green-300 w-full py-4 text-center">
+                {{Session::get('success')}}
+            </div>
+        @endif
+        @if (Session::get('fail'))
+            <div class="bg-red-300 w-full py-4 text-center">
+                {{Session::get('fail')}}
+            </div>
+        @endif
+        <form action="{{route('user.addInfo')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="flex items-center justify-end my-4">
                 <button type="submit" class="px-4 py-2 bg-indigo-600 text-gray-100 focus:outline-none rounded-xl">Enregistrer Modification</button>
@@ -65,9 +76,14 @@
                         </div> --}}
                         <div class="absolute bottom-0 right-0 z-10 w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center">
 
-                            <input type="file" class="custom-file-input" name="image" accept="image/*">
+                            <input type="file" class="custom-file-input" name="image" accept="file/*">
                         </div>
                     </div>
+                    <span class="text-red-400">
+                        @error('image')
+                            {{$message}}
+                        @enderror
+                    </span>
                     <div class="p-4 text-gray-700">
                         <h1 class="tracking-wide leading-loose capitalize">{{$loggedUserInfo->username}}</h1>
                         <span class="text-xs">{{$loggedUserInfo->email}}</span>
@@ -90,25 +106,39 @@
                             <span class="text-gray-700">Télephone</span>
                             <input class="form-input mt-1 block w-full" placeholder="+33 458 458 522" name="phone">
                           </label>
-                          
+                          <span class="text-red-400">
+                            @error('phone')
+                                {{$message}}
+                            @enderror
+                            </span>
                           <div class="mt-4">
                             <span class="text-gray-700">Sexe</span>
                             <div class="mt-2">
-                              <label class="inline-flex items-center">
-                                <input type="radio" class="form-radio border border-gray-400" name="gender" value="homme">
-                                <span class="ml-2">Homme</span>
-                              </label>
-                              <label class="inline-flex items-center ml-6">
-                                <input type="radio" class="form-radio border border-gray-400" name="gender" value="femme">
-                                <span class="ml-2">Femme</span>
-                              </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" class="form-radio border border-gray-400" name="gender" value="homme">
+                                    <span class="ml-2">Homme</span>
+                                </label>
+                                <label class="inline-flex items-center ml-6">
+                                    <input type="radio" class="form-radio border border-gray-400" name="gender" value="femme">
+                                    <span class="ml-2">Femme</span>
+                                </label>
                             </div>
+                            <span class="text-red-400">
+                                @error('gender')
+                                    {{$message}}
+                                @enderror
+                            </span>
                           </div>
                     </div>
                     <div class="bg-white rounded-2xl shadow-2xl p-8 mt-8">
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Addresse</h1>
                         <span class="text-xs">Veuillez Votre addresse</span>
                         <hr class="mb-4">
+                        <span class="text-red-400">
+                            @error('address')
+                                {{$message}}
+                            @enderror
+                        </span>
                         <input
                         name="address"
                         id="pac-input"
@@ -122,6 +152,16 @@
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Education</h1>
                         <span class="text-xs">Veuillez entre date et niveau</span>
                         <hr>
+                        <span class="text-red-400">
+                            @error('addmore.*.year')
+                                {{$message}}
+                            @enderror
+                        </span>
+                        <span class="text-red-400">
+                            @error('addmore.*.level')
+                                {{$message}}
+                            @enderror
+                        </span>
                         <ul id="list-education">
                             <li>
                                 <label class="block mt-4">
@@ -146,6 +186,11 @@
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Intéret</h1>
                         <span class="text-xs">Veuillez entrer vos intéret</span>
                         <hr>
+                        <span class="text-red-400">
+                            @error('interet.*')
+                                {{$message}}
+                            @enderror
+                        </span>
                         <ul id="list-interet">
                             <li>
                                 <label class="block">
@@ -161,6 +206,11 @@
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Compétences</h1>
                         <span class="text-xs">Veuillez entrer vos compétences</span>
                         <hr>
+                        <span class="text-red-400">
+                            @error('skills.*')
+                                {{$message}}
+                            @enderror
+                        </span>
                         <ul id="list-competence">
                             <li>
                                 <label class="block">
@@ -176,6 +226,11 @@
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Langues</h1>
                         <span class="text-xs">Veuillez entrer vos Langues</span>
                         <hr>
+                        <span class="text-red-400">
+                            @error('language.*')
+                                {{$message}}
+                            @enderror
+                        </span>
                         <ul id="list-language">
                             <li>
                                 <label class="block">
