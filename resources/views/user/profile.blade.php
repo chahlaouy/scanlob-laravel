@@ -55,7 +55,7 @@
                 <button type="submit" class="px-4 py-2 bg-indigo-600 text-gray-100 focus:outline-none rounded-xl">Enregistrer Modification</button>
             </div>
             <div class="flex">
-                <div class="bg-white rounded-2xl shadow-2xl w-96 mr-6">
+                <div class="bg-white rounded-2xl shadow-2xl w-96 mr-6 h-auto">
                     <div class="flex p-4 relative z-0">
                         <img src="{{asset('assets/images/profile.png')}}" class="h-96 w-full rounded-2xl object-cover" alt="">
                         {{-- <div class="absolute bottom-0 right-0 z-10 w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center">
@@ -65,7 +65,7 @@
                         </div> --}}
                         <div class="absolute bottom-0 right-0 z-10 w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center">
 
-                            <input type="file" class="custom-file-input" name="img" accept="image/*">
+                            <input type="file" class="custom-file-input" name="image" accept="image/*">
                         </div>
                     </div>
                     <div class="p-4 text-gray-700">
@@ -76,17 +76,9 @@
                         <p class="text-sm tracking-wide leading-loose text-gray-700 my-4">
                             veuillez entrer le résumé ici
                         </p>
-                        
-                        <textarea name="summary" id="" class="w-full h-full bg-gray-300 border border-gray-400 rounded-xl text-sm tracking-wide leading-loose text-gray-700" rows="15">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat eos animi neque, dolor,
-                            excepturi facere dolorem quia cumque, delectus magni cum ut distinctio maiores. Dolorum
-                            debitis neque distinctio provident beatae.
-                        </textarea>
-                        {{-- <p class="text-sm tracking-wide leading-loose text-gray-700">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat eos animi neque, dolor,
-                            excepturi facere dolorem quia cumque, delectus magni cum ut distinctio maiores. Dolorum
-                            debitis neque distinctio provident beatae.
-                        </p> --}}
+                        <label class="block">
+                            <textarea name="summary" class="form-textarea mt-1 block w-full border-2 border-gray-300 rounded" rows="10" placeholder="en 60 mots maximum exprimer votre resumée."></textarea>
+                        </label>
                     </div>
                 </div>
                 <div class="flex-1">
@@ -116,14 +108,15 @@
                     <div class="bg-white rounded-2xl shadow-2xl p-8 mt-8">
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Addresse</h1>
                         <span class="text-xs">Veuillez Votre addresse</span>
-                        <hr>
+                        <hr class="mb-4">
                         <input
+                        name="address"
                         id="pac-input"
-                        class="controls"
+                        class="controls py-2 px-4 border border-indigo-600 w-full rounded"
                         type="text"
-                        placeholder="Search Box"
+                        placeholder="Entrer Votre addresse"
                         />
-                        <div id="map"></div>
+                        <div id="map" class="w-full h-96"></div>
                     </div>
                     <div class="bg-white rounded-2xl shadow-2xl p-8 mt-8">
                         <h1 class="tracking-wide leading-loose capitalize tex-3xl">Education</h1>

@@ -129,9 +129,10 @@
         </div>
     </footer>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw&callback=initAutocomplete&libraries=places&v=weekly"
-    async
+    async defer
     ></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK_H25782ntfx8P1phlMxs1KngoieEaYw&libraries=places"> --}}
 </body>
