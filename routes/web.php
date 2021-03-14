@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CommandsController;
+use App\Http\Controllers\QrCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ use App\Http\Controllers\CommandsController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/nos-offres', [HomeController::class, 'products'])->name('products');
+Route::post('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/profile/{id}', [HomeController::class, 'getProfile'])->name('profile');
 Route::get('/apropos', [HomeController::class, 'products'])->name('about');
 Route::get('/contact', [HomeController::class, 'products'])->name('contact');
 
@@ -72,6 +75,13 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::post('/admin/update-offre', [OffersController::class, 'update'])->name('admin.update-offer');
     Route::get('/admin/confirmation/{id}', [OffersController::class, 'confirm']);
     Route::post('/admin/supprimer-offre/{id}', [OffersController::class, 'delete']);
+
+    /** Qrcode Controller */
+
+    Route::get('/admin/qr-code', [QrCodeController::class, 'index'])->name('admin.qr-code');
+    Route::get('/admin/qr-code-list', [QrCodeController::class, 'list'])->name('admin.qr-code-list');
+    Route::get('/admin/qr-code-generate', [QrCodeController::class, 'generate'])->name('admin.qr-code-generate');
+
     
 });
 

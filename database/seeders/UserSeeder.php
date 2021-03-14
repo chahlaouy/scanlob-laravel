@@ -17,36 +17,36 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'username' => Str::random(10),
-            'email' => 'user@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-        DB::table('users')->insert([
-            'username' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-        DB::table('users')->insert([
-            'username' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-        DB::table('users')->insert([
-            'username' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-        DB::table('users')->insert([
-            'username' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-        DB::table('users')->insert([
-            'username' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
+        // DB::table('users')->insert([
+        //     'username' => Str::random(10),
+        //     'email' => 'user@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+        // DB::table('users')->insert([
+        //     'username' => Str::random(10),
+        //     'email' => Str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+        // DB::table('users')->insert([
+        //     'username' => Str::random(10),
+        //     'email' => Str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+        // DB::table('users')->insert([
+        //     'username' => Str::random(10),
+        //     'email' => Str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+        // DB::table('users')->insert([
+        //     'username' => Str::random(10),
+        //     'email' => Str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+        // DB::table('users')->insert([
+        //     'username' => Str::random(10),
+        //     'email' => Str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
 
         DB::table('admins')->insert([
             'username' => Str::random(10),

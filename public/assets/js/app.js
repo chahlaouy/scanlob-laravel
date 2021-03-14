@@ -1977,6 +1977,22 @@ window.initAutocomplete = function () {
   });
 };
 
+window.initMap = function () {
+  var myLatLng = {
+    lat: -25.363,
+    lng: 131.044
+  };
+  var map = new google.maps.Map(document.getElementById("map_profile"), {
+    zoom: 4,
+    center: myLatLng
+  });
+  new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: "Hello World!"
+  });
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

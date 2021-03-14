@@ -8,6 +8,8 @@ use App\Models\User;
 
 use App\Models\UserExtraInfo;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     function index(){
@@ -30,19 +32,31 @@ class UserController extends Controller
         $data   =   [
             'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
         ];
-        return view('user.cards');
+        return view('user.cards', $data);
     }
     function commands(){
         $data   =   [
             'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
         ];
-        return view('user.commands');
+        return view('user.commands', $data);
     }
     function qrCode(){
+
+        $qrcodes = DB::table('qrcodes')->get();
+
+        $loggedUserInfo  =  User::where('id', '=', session('loggedUserId'))->first();
+        
+        foreach($qrcodes as $qr){
+            if($qr->id == $loggedUserInfo->qrcode_id){
+                $qr_string = $qr->qrcode_string;
+            }
+        }
+
         $data   =   [
-            'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first()
+            'loggedUserInfo'  =>  $loggedUserInfo,
+            'qr_string' => $qr_string
         ];
-        return view('user.qr-code');
+        return view('user.qr-code', $data);
     }
 
     function addUserInfo(Request $request){

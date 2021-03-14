@@ -195,3 +195,17 @@ window.initAutocomplete = function () {
     });
 }
 
+ window.initMap =  function(){
+
+    const myLatLng = { lat: -25.363, lng: 131.044 };
+    const map = new google.maps.Map(document.getElementById("map_profile"), {
+      zoom: 4,
+      center: myLatLng,
+    });
+    new google.maps.Marker({
+      position: myLatLng,
+      map,
+      title: "Hello World!",
+    });
+  }
+

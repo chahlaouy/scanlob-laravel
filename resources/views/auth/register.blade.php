@@ -24,7 +24,7 @@
                     <div>
                         @if (Session::get('success'))
                             <div class="w-full px-4 py-2 my-4 bg-green-300 rounded text-center text-gray-500">
-                                {{Session::get('success')}}
+                                <h1>{{Session::get('success')}}</h1>
                             </div>
                         @endif
                         @if (Session::get('fail'))

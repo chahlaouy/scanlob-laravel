@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
+use App\Models\Qrcode;
 
 class UserAuthController extends Controller
 {
@@ -37,6 +38,15 @@ class UserAuthController extends Controller
 
         // if form validated successfully
 
+        $qrcode = new Qrcode;
+        $qrcode_string = rand(11111, 99999);
+        
+        $qrcode->qrcode_string = $qrcode_string;
+
+        $qrcode->qrcode_url = '';
+        $qrcode->verified = false;
+
+        $query2 = $qrcode->save();
         //Creating a blank user
         $user = new User;
         
@@ -44,9 +54,12 @@ class UserAuthController extends Controller
         $user->username     =       $request->username;
         $user->email        =       $request->email;
         $user->password     =       Hash::make($request->password);
+        $user->qrcode_id     =       $qrcode->id;
 
         // Save The User
         $query = $user->save();
+
+        
 
         // Using query builder
         // $query = DB::table('users')
@@ -56,11 +69,14 @@ class UserAuthController extends Controller
         //                 'password'  =>  Hash::make($request-password),
         //             ]);
         // Check the nothing goes wrong
-        if ($query){
 
-            return back()->with('success', 'you have been successfully registred');
+        if ($query && $query2){
+
+            $request->session()->put('loggedUserId', $user->id);
+            // return back()->with('success', 'Vous avez bien été enregistré');
+            return redirect('/dashboard');
         } else {
-            return back()->with('fail', 'Sorry something went wrong');
+            return back()->with('fail', "désolé, quelque chose s'est mal passé, essayez plus tard");
         }
     }
 

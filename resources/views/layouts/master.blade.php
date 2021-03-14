@@ -50,14 +50,22 @@
                     </a>
                 </li> --}}
             </ul>
-            {{-- <div class="w-96 text-gray-600 text-sm px-4" style="background: #e7eeed;">
+            <div class="w-96 text-gray-600 text-sm px-4" style="background: #e7eeed;">
                 <div class="relative text-sm flex items-center">
-                     <input type="text" class="px-4 py-2 bg-gray-200 w-full rounded border border-gray-300" placeholder="chercher un profile">
-                     <button class="-ml-12 py-2 bg-indigo-600 text-white px-4 rounded-r border border-indigo-600">
-                         <ion-icon name="search" class="text-sm"></ion-icon>
-                     </button>
+                    <form action="{{route('search')}}" method="POST">
+                        @csrf
+                        <input type="text" class="px-4 py-2 bg-gray-200 w-full rounded border border-gray-300" placeholder="Entrer qr-code" name="qrcode">
+                        <button type="submit" class="absolute -ml-12 py-2 h-full bg-indigo-600 text-white px-4 rounded-r border border-indigo-600">
+                            <ion-icon name="search" class="text-sm"></ion-icon>
+                        </button>
+                        <span class="text-red-400">
+                            @error('qrcode')
+                                {{$message}}
+                            @enderror
+                        </span>
+                    </form>
                  </div>
-             </div> --}}
+             </div>
             <div class="flex text-center">
                 @if (isset($loggedUserInfo))
                     <div class="relative">

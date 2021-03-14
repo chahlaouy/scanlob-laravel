@@ -13,10 +13,10 @@
             
     <div class="flex-1">
         <h2 class="text-sm uppercase text-indigo-600 tracking-wider leading-loose">Lorem ipsum dolor</h2>
-        <h1 class="text-7xl text-gray-800  ">Vous n'avez plus besoin de CV ! </h1>
+        <h1 class="text-7xl text-gray-800  ">Vous n'avez plus besoin de cv ! </h1>
         <p class="max-w-lg mt-12 text-gray-500 tracking-wide leading-loose">
             Avec SCANLOB, 
-            <span class="text-red-400">
+            <span class="text-indigo-600">
                 VOUS ÊTES UNIQUE
             </span>
              <br>

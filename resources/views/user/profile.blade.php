@@ -10,13 +10,13 @@
     <div class="w-96 text-gray-600 text-sm" style="background: #e7eeed;">
         <ul>
             <li>
-                <a href="{{route('user.dashboard')}}" class="py-2 flex items-center text-indigo-600">
+                <a href="{{route('user.dashboard')}}" class="py-2 flex items-center hover:text-indigo-600">
                     <ion-icon name="apps" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{{route('user.profile')}}" class="py-2 flex items-center hover:text-indigo-600">
+                <a href="{{route('user.profile')}}" class="py-2 flex items-center text-indigo-600">
                     <ion-icon name="person" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Profile</span>
                 </a>
