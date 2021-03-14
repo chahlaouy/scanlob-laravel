@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OffersController;
+use App\Http\Controllers\CommandsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +60,7 @@ Route::group(['middleware' => 'isLogged'], function(){
     
     /**Commands controller */
     
-    Route::get('/admin/gestion-commands', [OffersController::class, 'commands'])->name('admin.commands');
+    Route::get('/admin/gestion-commands', [CommandsController::class, 'index'])->name('admin.commands');
     
     /** Offers controller */
     
@@ -67,6 +68,10 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::get('/admin/liste-des-offres', [OffersController::class, 'offerList'])->name('admin.offers-List');
     Route::get('/admin/ajouter-offre', [OffersController::class, 'add'])->name('admin.add-offer');
     Route::post('/admin/creation-offre', [OffersController::class, 'create'])->name('admin.offer-create');
+    Route::get('/admin/editer-offre/{id}', [OffersController::class, 'editOffer']);
+    Route::post('/admin/update-offre', [OffersController::class, 'update'])->name('admin.update-offer');
+    Route::get('/admin/confirmation/{id}', [OffersController::class, 'confirm']);
+    Route::post('/admin/supprimer-offre/{id}', [OffersController::class, 'delete']);
     
 });
 

@@ -17,7 +17,7 @@ class CreateOffersTable extends Migration
             $table->id();
             $table->string('img_url');
             $table->string('title');
-            $table->int('price');
+            $table->integer('price');
             $table->string('tag');
             $table->string('description');
             $table->string('category');

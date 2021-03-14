@@ -35,7 +35,7 @@
             </li>
         </ul>
     </div>  
-    <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-8 w-full">
+    <div class="bg-gray-800 bg-opacity-50 rounded-3xl p-8 w-full">
         <div class="flex">
             <div class="p-2 text-center">
                 <div class="bg-white rounded-2xl shadow-2xl w-64 h-full px-2 py-8">

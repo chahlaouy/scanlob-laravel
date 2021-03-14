@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Dashboard
+    Editer l'offre
 @endsection
 
 @section('content')
@@ -47,15 +47,16 @@
             </div>
         @endif
         <div class="bg-indigo-600 rounded-2xl shadow-2xl py-4 text-center text-gray-100">
-            <h1 class="text-center text-4xl">Ajouter Un Offre</h1>
+            <h1 class="text-center text-2xl">Mise A jour d'un Offre</h1>
  
         </div>
         <div class="bg-white rounded-2xl shadow-2xl p-6 text-center text-gray-700 mt-8">
-            <form action="{{route('admin.offer-create')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.update-offer')}}" method="POST" enctype="multipart/form-data">
             @csrf
+                <input type="text" class="hidden" name="id">
                 <label class="block mt-4">
                     <div class="text-gray-700 text-left">Titre</div>
-                    <input type="text" class="form-input mt-1 block w-full py-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="titre ici" name="title">
+                    <input type="text" class="form-input mt-1 block w-full py-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="titre ici" name="title" value="{{$offer->title}}">
                 </label>
                 <span class="text-red-400">
                     @error('title')
@@ -64,7 +65,7 @@
                 </span>
                 <label class="block mt-4">
                     <div class="text-gray-700 text-left">Tag</div>
-                    <input type="text" class="form-input mt-1 block w-full py-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="tag ici" name="tag">
+                    <input type="text" class="form-input mt-1 block w-full py-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="tag ici" name="tag" value="{{$offer->tag}}">
                 </label>
                 <span class="text-red-400">
                     @error('teg')
@@ -73,11 +74,13 @@
                 </span>
                 <label class="block mt-4">
                     <div class="text-gray-700 text-left">Prix</div>
-                    <input type="number" class="form-input mt-1 block w-full py-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="60$" name="price">
+                    <input type="number" class="form-input mt-1 block w-full py-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="60$" name="price" value="{{$offer->price}}">
                 </label>
                 <label class="block mt-4">
                     <div class="text-gray-700 text-left">Description</div>
-                    <textarea type="text" class="form-input mt-1 block w-full p-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="description ici" rows="5" name="description"></textarea>
+                    <textarea type="text" class="form-input mt-1 block w-full p-2 border-2 border-gray-300 rounded focus:outline-indigo-600" placeholder="description ici" rows="5" name="description" >
+                        {{$offer->description}}
+                    </textarea>
                 </label>
                 <label class="block mt-4">
                     <div class="text-gray-700 text-left">Categorie</div>

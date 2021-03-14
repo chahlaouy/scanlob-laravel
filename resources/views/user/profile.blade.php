@@ -51,12 +51,12 @@
     <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-12 w-full rounded">
 
         @if (Session::get('success'))
-            <div class="bg-green-300 w-full py-4 text-center">
+            <div class="bg-green-300 w-full py-4 text-center rounded my-4">
                 {{Session::get('success')}}
             </div>
         @endif
         @if (Session::get('fail'))
-            <div class="bg-red-300 w-full py-4 text-center">
+            <div class="bg-red-300 w-full py-4 text-center rounded my-4">
                 {{Session::get('fail')}}
             </div>
         @endif
