@@ -16,22 +16,51 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <div class="w-full">
-            <label class="block mt-4">
-                <span class="text-gray-700">titre</span>
-                <input class="form-input mt-1 block w-full" placeholder="Placer le titre de votre message ici" name="title">
-            </label>
-            <label class="block mt-4">
-                <span class="text-gray-700">Message</span>
-                <input class="form-input mt-1 block w-full" placeholder="votre message" name="body">
-            </label>
+        <div class="w-full p-4">
+            <form action="/ajouter-avis/{{$user->id}}" method="POST">
+                @csrf
+                <h1 class="text-center text-gray-700 text-3xl">
+                    Votre Avis
+                </h1>
+                <label class="block mt-4">
+                    <span class="text-gray-700">Titre</span>
+                    <input class="form-input block w-full border-2 border-gray-300 my-4 rounded focus:outline-indigo-600" placeholder="Placer le titre de votre message ici" name="title">
+                </label>
+                <span class="text-red-400">
+                    @error('title')
+                        {{$message}}
+                    @enderror
+                </span>
+                <label class="block mt-4">
+                    <span class="text-gray-700">Message</span>
+                    <textarea class="form-input block w-full border-2 border-gray-300 my-4 rounded focus:outline-indigo-600" placeholder="votre message" name="body"></textarea>
+                </label>
+                <span class="text-red-400">
+                    @error('body')
+                        {{$message}}
+                    @enderror
+                </span>
+                <button class="bg-indigo-600 px-4 py-2 rounded text-white block" type="submit">
+                    Envoyer
+                </button>
+            </form>
         </div>
     </div>
 
     </div>
     <section class="container mx-auto bg-profile flex justify-between rounded-3xl">
-            
+        
         <div class="bg-gray-800 bg-opacity-5 rounded-3xl p-16 w-full">
+            @if (Session::get('success'))
+            <div class="bg-green-300 w-full py-4 text-center rounded my-4">
+                {{Session::get('success')}}
+                </div>
+            @endif
+            @if (Session::get('fail'))
+                <div class="bg-red-300 w-full py-4 text-center rounded my-4">
+                    {{Session::get('fail')}}
+                </div>
+            @endif 
             <div class="flex">
                 <div class="bg-white rounded-2xl shadow-2xl w-96 mr-6">
                     <div class="flex p-4">

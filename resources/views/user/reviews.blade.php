@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    mes avis
+    Mes avis
 @endsection
 
 @section('content')
@@ -55,38 +55,57 @@
         </ul>
     </div>  
     <div class="bg-gray-800 bg-opacity-50 rounded-3xl p-12 w-full">
-        @if (Session::get('success'))
-            <div class="bg-green-300 w-full py-4 text-center rounded my-4">
-                {{Session::get('success')}}
-            </div>
-        @endif
-        @if (Session::get('fail'))
-            <div class="bg-red-300 w-full py-4 text-center rounded my-4">
-                {{Session::get('fail')}}
-            </div>
-        @endif
-        <div class="">
-            <div class="flex-1 p-8">
-                <div class="bg-indigo-600 rounded-2xl shadow-2xl p-12 text-center text-gray-100">
-                    <a href="{{route('admin.qr-code-generate')}}" class="p-12" >
-                        Mon Qr code
-                    </a>
+        @if (isset($reviews))
+        @foreach ($reviews as $review)
+            
+            <div class="">
+                <div class="p-4 bg-white shadow-2xl flex rounded-2xl">
+                    <div class="flex mr-8">
+                        <img src="{{asset('assets/images/profile.png')}}" class="w-24 rounded-2xl object-cover  shadow-2xl" alt=""> 
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <div>
+                                <h1 class="text-2xl text-gray-800">
+                                    {{$review->author}}
+                                </h1>
+                                <span class="text-sm block text-gray-600">Avis titre:</span>
+                                <span class="text-sm block text-indigo-700">{{$review->title}}</span>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <p class="text-sm tracking-wide leading-loose text-gray-700">
+                            {{$review->body}}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="flex-1 p-8">
-                <div class="bg-white rounded-2xl shadow-2xl p-12 text-center text-gray-700">
 
-                    <div class="">
-                        <ion-icon name="qr-code" class="text-8xl text-red-400"></ion-icon>
+                <section>
+                    <div class="flex items-center justify-center my-10">
+                
+                        <div class="flex items-center">
+                            <div class="text-white bg-indigo-600 px-4 py-2 rounded mr-2 shadow-2xl border-gray-300 border">
+                                1
+                            </div>
+                            <div class="bg-white text-indigo-600 px-4 py-2 rounded mr-2 shadow-2xl border-gray-300 border">
+                                2
+                            </div>
+                            <div class="bg-white text-indigo-600 px-4 py-2 rounded mr-2 shadow-2xl border-gray-300 border">
+                                3
+                            </div>
+                            <div class="bg-white text-indigo-600 px-4 py-2 rounded shadow-2xl border-gray-300 border">
+                                4
+                            </div>
+                        </div>
+                
                     </div>
-                    <div class="my-4">
-                        <button class="bg-gray-300 py-3 px-5 shadow-lg rounded">
-                            {{$qr_string}}
-                        </button>
-                    </div>
-                </div>
+                </section>
             </div>
-        </div>
+        @endforeach
+            
+        @else
+            <h1 class="text-gray-700 text-4xl">Sorry No Reviews</h1>
+        @endif
     </div>
      
 </section>

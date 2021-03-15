@@ -61,14 +61,21 @@ class UserController extends Controller
     function reviews(){
 
         $reviews = DB::table('reviews')->get();
-
         $loggedUserInfo  =  User::where('id', '=', session('loggedUserId'))->first();
+        if(count($reviews)>0){
+            $data   =   [
+                'loggedUserInfo'  =>  $loggedUserInfo,
+                'reviews' => $reviews
+            ];
+            return view('user.reviews', $data);
+        }else{
+            $data   =   [
+                'loggedUserInfo'  =>  $loggedUserInfo,
+            ];
+            return view('user.reviews', $data);
+        }
+        
 
-        $data   =   [
-            'loggedUserInfo'  =>  $loggedUserInfo,
-            'reviews' => $reviews
-        ];
-        return view('user.reviews', $data);
     }
 
     function addUserInfo(Request $request){

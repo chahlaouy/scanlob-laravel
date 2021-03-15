@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CommandsController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('/contact', [HomeController::class, 'products'])->name('contact');
 Route::get('/qr-code', [UserAuthController::class, 'qrCode'])->name('user.qr-code');
 Route::post('/create', [UserAuthController::class, 'createUser'])->name('user.create');
 Route::post('/check', [UserAuthController::class, 'check'])->name('user.check');
+Route::post('/ajouter-avis/{id}', [ReviewController::class, 'createReview']);
 
 // Admin Routes
 
