@@ -27,6 +27,7 @@ use App\Http\Controllers\QrCodeController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/nos-offres', [HomeController::class, 'products'])->name('products');
+Route::get('/offre/{id}', [HomeController::class, 'getOffer']);
 Route::post('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/profile/{id}', [HomeController::class, 'getProfile'])->name('profile');
 Route::get('/apropos', [HomeController::class, 'products'])->name('about');
@@ -52,6 +53,7 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::get('/commandes', [UserController::class, 'commands'])->name('user.commands');
     Route::get('/cartes', [UserController::class, 'cards'])->name('user.cards');
     Route::get('/qr-code', [UserController::class, 'qrCode'])->name('user.qr-code');
+    Route::get('/mes-avis', [UserController::class, 'reviews'])->name('user.reviews');
     Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('user.logout');
 
     

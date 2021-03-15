@@ -47,6 +47,7 @@ class UserAuthController extends Controller
         $qrcode->verified = false;
 
         $query2 = $qrcode->save();
+
         //Creating a blank user
         $user = new User;
         

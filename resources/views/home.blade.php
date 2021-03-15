@@ -164,192 +164,73 @@
 -->
 <section class="container mx-auto">
     <h1 class="text-5xl text-gray-800 my-24 text-center">Nos derniére offre </h1>
-    <section class="flex items-center justify-around">
-        <!-- 1111111111 -->
 
-        <div id="card" class="overflow-hidden rounded-lg w-96">
-            <div class="w-full relative z-0">
-                <div class="bg-gray-900 bg-opacity-5 w-full h-full absolute z-10 rounded-lg overflow-hidden">
-                    <div
-                        class="flex justify-center items-center py-4 text-gray-600 text-sm bg-opacity-75 text-center rounded-t-lg">
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 rounded-icon rounded-icon-1">
-                                <ion-icon name="desktop-outline" class="text-xl text-gray-100"></ion-icon>
+    <section class="grid grid-cols-3 gap-8 px-12">
+
+        @foreach ($offers as $offer) 
+            <div id="card" class="overflow-hidden rounded-lg">
+                <div class="w-full relative z-0">
+                    <div class="bg-gray-900 bg-opacity-50 w-full h-full absolute z-10 rounded-lg overflow-hidden">
+                        <div
+                            class="flex justify-center items-center py-4 text-gray-600 text-sm bg-opacity-75 text-center rounded-t-lg">
+                            <div class="flex-1 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 rounded-icon rounded-icon-1">
+                                    <ion-icon name="desktop-outline" class="text-xl text-gray-100"></ion-icon>
+                                </div>
+                            </div>
+                            <div class="flex-1 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-2">
+                                    <ion-icon name="stats-chart-outline" class="text-xl"></ion-icon>
+                                </div>
+                            </div>
+    
+                            <div class="flex-1 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-3">
+                                    <ion-icon name="list-outline" class="text-xl"></ion-icon>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-2">
-                                <ion-icon name="stats-chart-outline" class="text-xl"></ion-icon>
-                            </div>
-                        </div>
-
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-3">
-                                <ion-icon name="list-outline" class="text-xl"></ion-icon>
+                        <div class="absolute bottom-0 left-0 w-full z-0">
+                            <div class="flex items-center text-xs text-gray-100 ">
+                                <div class="px-1 py-2 ">
+                                    <ion-icon name="cloud-download" class="pr-1"></ion-icon>
+                                    <span class="text-xs">122</span>
+                                </div>
+                                <div class="px-1 py-2">
+                                    <ion-icon name="star" class="pr-1"></ion-icon>
+                                    <span class="text-xs">4/5</span>
+                                </div>
+    
                             </div>
                         </div>
                     </div>
-                    <div class="absolute bottom-0 left-0 w-full z-0">
-                        <div class="flex items-center text-xs text-gray-100 ">
-                            <div class="px-1 py-2 ">
-                                <ion-icon name="cloud-download" class="pr-1"></ion-icon>
-                                <span class="text-xs">122</span>
+                    <img src="{{asset('assets/images').'/'.$offer->img_url}}" alt="" class="w-full h-96 object-cover rounded-t-lg shadow-lg" />
+                </div>
+                <div class="bg-white shadow-lg rounded-b-lg">
+                    <div class="px-6">
+                        <div class="flex justify-between items-center">
+                            <div class="my-4">
+                                <span class="text-xs uppercase leading-loose tracking-wide">{{$offer->tag}}</span>
+                                <h1 class="text-2xl font-bold">{{$offer->title}}</h1>
                             </div>
-                            <div class="px-1 py-2">
-                                <ion-icon name="star" class="pr-1"></ion-icon>
-                                <span class="text-xs">4/5</span>
-                            </div>
-
+                            <h1 class="flex items-start text-right">
+                                <div class="font-bold text-xl py-3">{{$offer->price}}</div>
+                                <span class="text-xs text-gray-600 pt-3">/euro</span>
+                            </h1>
+                        </div>
+                        <div class="relative text-sm text-gray-500 pb-2">
+                            <p>{{$offer->description}}</p>
+                            <button
+                                class="w-8 h-8 bg-red-400 rounded-full absolute z-0 bottom-8 right-0 outline-none"></button>
                         </div>
                     </div>
                 </div>
-                <img src="./assets/images/visit-card.png" alt="" class="w-full rounded-t-lg shadow-lg" />
             </div>
-            <div class="bg-white shadow-lg rounded-b-lg">
-                <div class="px-6">
-                    <div class="flex justify-between items-center">
-                        <h1 class="text-2xl font-bold my-4">Carte Viste </h1>
-                        <h1 class="flex items-start text-right">
-                            <div class="font-bold text-xl py-3">69</div>
-                            <span class="text-xs text-gray-600 pt-3">/TND</span>
-                        </h1>
-                    </div>
-                    <div class="relative text-sm text-gray-500 pb-2">
-                        <p>Lorem ipsum dolor sit amet consectetur</p>
-                        <button
-                            class="w-8 h-8 bg-indigo-300 rounded-full absolute z-0 bottom-8 right-0 outline-none"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 222222 -->
-
-
-        <div id="card" class="overflow-hidden rounded-lg w-96">
-            <div class="w-full relative z-0">
-                <div class="bg-gray-900 bg-opacity-20 w-full h-full absolute z-10 rounded-lg overflow-hidden">
-                    <div
-                        class="flex justify-center items-center py-4 text-gray-600 text-sm bg-opacity-75 text-center rounded-t-lg">
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 rounded-icon rounded-icon-1">
-                                <ion-icon name="desktop-outline" class="text-xl text-gray-100"></ion-icon>
-                            </div>
-                        </div>
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-2">
-                                <ion-icon name="stats-chart-outline" class="text-xl"></ion-icon>
-                            </div>
-                        </div>
-
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-3">
-                                <ion-icon name="list-outline" class="text-xl"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full z-0">
-                        <div class="flex items-center text-xs text-gray-100 ">
-                            <div class="px-1 py-2 ">
-                                <ion-icon name="cloud-download" class="pr-1"></ion-icon>
-                                <span class="text-xs">122</span>
-                            </div>
-                            <div class="px-1 py-2">
-                                <ion-icon name="star" class="pr-1"></ion-icon>
-                                <span class="text-xs">4/5</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <img src="./assets/images/visit-card-2.png" alt="" class="w-full rounded-t-lg shadow-lg" />
-            </div>
-            <div class="bg-white shadow-lg rounded-b-lg">
-                <div class="px-6">
-                    <div class="flex justify-between items-center">
-                        <h1 class="text-2xl font-bold my-4">Carte Viste</h1>
-                        <h1 class="flex items-start text-right">
-                            <div class="font-bold text-xl py-3">69</div>
-                            <span class="text-xs text-gray-600 pt-3">/TND</span>
-                        </h1>
-                    </div>
-                    <div class="relative text-sm text-gray-500 pb-2">
-                        <p>Lorem ipsum dolor sit amet consectetur ad</p>
-                        <button
-                            class="w-8 h-8 bg-red-400 rounded-full absolute z-0 bottom-8 right-0 outline-none"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 33333 -->
-
-
-        <div id="card" class="overflow-hidden rounded-lg w-96">
-            <div class="w-full relative z-0">
-                <div class="bg-gray-900 bg-opacity-50 w-full h-full absolute z-10 rounded-lg overflow-hidden">
-                    <div
-                        class="flex justify-center items-center py-4 text-gray-600 text-sm bg-opacity-75 text-center rounded-t-lg">
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-500 rounded-icon rounded-icon-1">
-                                <ion-icon name="desktop-outline" class="text-xl text-gray-100"></ion-icon>
-                            </div>
-                        </div>
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-2">
-                                <ion-icon name="stats-chart-outline" class="text-xl"></ion-icon>
-                            </div>
-                        </div>
-
-                        <div class="flex-1 flex items-center justify-center">
-                            <div
-                                class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 rounded-icon rounded-icon-3">
-                                <ion-icon name="list-outline" class="text-xl"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full z-0">
-                        <div class="flex items-center text-xs text-gray-100 ">
-                            <div class="px-1 py-2 ">
-                                <ion-icon name="cloud-download" class="pr-1"></ion-icon>
-                                <span class="text-xs">122</span>
-                            </div>
-                            <div class="px-1 py-2">
-                                <ion-icon name="star" class="pr-1"></ion-icon>
-                                <span class="text-xs">4/5</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <img src="./assets/images/visit-card-3.png" alt="" class="w-full rounded-t-lg shadow-lg" />
-            </div>
-            <div class="bg-white shadow-lg rounded-b-lg">
-                <div class="px-6">
-                    <div class="flex justify-between items-center">
-                        <h1 class="text-2xl font-bold my-4">Carte Viste</h1>
-                        <h1 class="flex items-start text-right">
-                            <div class="font-bold text-xl py-3">69</div>
-                            <span class="text-xs text-gray-600 pt-3">/TND</span>
-                        </h1>
-                    </div>
-                    <div class="relative text-sm text-gray-500 pb-2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisi.</p>
-                        <button
-                            class="w-8 h-8 bg-red-400 rounded-full absolute z-0 bottom-8 right-0 outline-none"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </section>
+
 </section>
 @endsection

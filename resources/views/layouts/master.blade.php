@@ -58,11 +58,11 @@
                         <button type="submit" class="absolute -ml-12 py-2 h-full bg-indigo-600 text-white px-4 rounded-r border border-indigo-600">
                             <ion-icon name="search" class="text-sm"></ion-icon>
                         </button>
-                        <span class="text-red-400">
+                        {{-- <span class="text-red-400">
                             @error('qrcode')
                                 {{$message}}
                             @enderror
-                        </span>
+                        </span> --}}
                     </form>
                  </div>
              </div>

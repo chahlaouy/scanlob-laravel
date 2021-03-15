@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Qr code
+    mes avis
 @endsection
 
 @section('content')
@@ -35,13 +35,13 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('user.qr-code')}}" class="py-2 flex items-center text-indigo-600">
+                <a href="{{route('user.qr-code')}}" class="py-2 flex items-center hover:text-indigo-600">
                     <ion-icon name="id-card" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Mon Qr-Code</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('user.reviews')}}" class="py-2 flex items-center hover:text-indigo-600">
+                <a href="{{ route('user.reviews')}}" class="py-2 flex items-center text-indigo-600">
                     <ion-icon name="star" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Mes Avis</span>
                 </a>

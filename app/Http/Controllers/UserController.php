@@ -58,52 +58,161 @@ class UserController extends Controller
         ];
         return view('user.qr-code', $data);
     }
+    function reviews(){
+
+        $reviews = DB::table('reviews')->get();
+
+        $loggedUserInfo  =  User::where('id', '=', session('loggedUserId'))->first();
+
+        $data   =   [
+            'loggedUserInfo'  =>  $loggedUserInfo,
+            'reviews' => $reviews
+        ];
+        return view('user.reviews', $data);
+    }
 
     function addUserInfo(Request $request){
 
 
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'addmore.*.year' => 'required',
-            'addmore.*.level' => 'required',
-            'skills.*' => 'required',
-            'interet.*' => 'required',
-            'language.*' => 'required',
-            'summary' => 'required',
-            'phone' => 'required',
-            'gender' => 'required',
-            'address' => 'required'
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'addmore.*.year' => 'required',
+            // 'addmore.*.level' => 'required',
+            // 'skills.*' => 'required',
+            // 'interet.*' => 'required',
+            // 'language.*' => 'required',
+            // 'summary' => 'required',
+            // 'phone' => 'required',
+            // 'gender' => 'required',
+            // 'address' => 'required'
         ]);
 
-        // dd(json_encode($request->addmore));
-        // dd($request->input());
+        /** if user is modifying the extra info */
+        $userInfo = UserExtraInfo::where('user_id', '=', session('loggedUserId'))->first();
+        if($userInfo){
+            if($request->image){
+                $imageName = time().'.'.$request->image->extension();  
+                $request->image->move(public_path('assets/images'), $imageName);
+                $userInfo->img_url = $imageName;
+            }
 
-        $imageName = time().'.'.$request->image->extension();  
+            if($request->summary){
+    
+                $userInfo->summary = $request->summary;
+            }
 
-        $request->image->move(public_path('assets/images'), $imageName);
+            if($request->address){
+    
+                $userInfo->address = $request->address;
+            }
 
-        /* Store $imageName name in DATABASE from HERE */
+            if($request->phone){
+    
+                $userInfo->phone = $request->phone;
+            }
 
-        $userExtraInfo = new UserExtraInfo;
+            if($request->gender){
+    
+                $userInfo->gender = $request->gender;
+            }
+    
+            if($request->interet){
+    
+                $userInfo->interet = $request->interet;
+            }
+    
+            if($request->language){
+    
+                $userInfo->languages = $request->language;
+            }
+    
+            if($request->skills){
+    
+                $userInfo->skills = $request->skills;
+            }
+    
+            if($request->addmore){
+    
+                $userInfo->education = $request->addmore;
+            }
+            $status = $userInfo->save();   
+        }else{
 
+            /* Store $imageName name in DATABASE from HERE */
+    
+            $userExtraInfo = new UserExtraInfo;
+    
+            if($request->image){
+                $imageName = time().'.'.$request->image->extension();  
+                $request->image->move(public_path('assets/images'), $imageName);
+                $userExtraInfo->img_url = $imageName;
+            }else{
+                $userExtraInfo->img_url = '';
+            }
+    
+            if($request->summary){
+    
+                $userExtraInfo->summary = $request->summary;
+            }else{
+                $userExtraInfo->summary ='';
+            }
+    
+            if($request->address){
+    
+                $userExtraInfo->address = $request->address;
+            }else{
+                $userExtraInfo->address = '';
+            }
+    
+            if($request->phone){
+    
+                $userExtraInfo->phone = $request->phone;
+            }else{
+                $userExtraInfo->phone = '';
+            }
+    
+            if($request->gender){
+    
+                $userExtraInfo->gender = $request->gender;
+            }else{
+                $userExtraInfo->gender = '';
+            }
+    
+            if($request->interet){
+    
+                $userExtraInfo->interet = $request->interet;
+            }else{
+                $userExtraInfo->interet = '';
+            }
+    
+            if($request->language){
+    
+                $userExtraInfo->languages = $request->language;
+            }else{
+                $userExtraInfo->languages = '';
+            }
+    
+            if($request->skills){
+    
+                $userExtraInfo->skills = $request->skills;
+            }else{
+                $userExtraInfo->skills = '';
+            }
+    
+            if($request->addmore){
+    
+                $userExtraInfo->education = $request->addmore;
+            }else{
+                $userExtraInfo->education = '';
+            }
+            
+            $userExtraInfo->experience = '';
+            $userExtraInfo->certifications = '';
+    
+            $userExtraInfo->user_id = session('loggedUserId');
+            $status = $userExtraInfo->save();
+        }
 
-        $userExtraInfo->img_url = $imageName;
-        $userExtraInfo->summary = $request->summary;
-        $userExtraInfo->address = $request->address;
-        $userExtraInfo->phone = $request->phone;
-        $userExtraInfo->gender = $request->gender;
-        $userExtraInfo->interet = $request->interet;
-        $userExtraInfo->languages = $request->language;
-        $userExtraInfo->skills = $request->skills;
-        $userExtraInfo->experience = '';
-        $userExtraInfo->certifications = '';
-        $userExtraInfo->education = $request->addmore;
-        
-
-        $userExtraInfo->user_id = session('loggedUserId');
-
-        $status = $userExtraInfo->save();
-        
         if($status){
 
             return back()->with('success','Vous avez mis à jour votre profil avec succès.');
@@ -111,8 +220,6 @@ class UserController extends Controller
         }else{ 
             return back()->with('fail','Quelque chose ne va pas, veuillez réessayer plus tard.');
         }
-
-
 
     }
 }

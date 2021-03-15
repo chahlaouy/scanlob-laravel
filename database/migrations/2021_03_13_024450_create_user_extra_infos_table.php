@@ -26,7 +26,7 @@ class CreateUserExtraInfosTable extends Migration
             $table->string('phone');
             $table->json('languages');
             $table->json('certifications');
-            $table->integer('user_id')->default(Null);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

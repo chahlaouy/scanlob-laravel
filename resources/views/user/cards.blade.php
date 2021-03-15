@@ -41,8 +41,14 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('user.reviews')}}" class="py-2 flex items-center hover:text-indigo-600">
+                    <ion-icon name="star" class="text-indigo-600 mr-2 text-lg"></ion-icon>
+                    <span class="capitalize tracking-wider leading-loose">Mes Avis</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('user.logout')}}" class="py-2 flex items-center hover:text-indigo-600">
-                    <ion-icon name="log-out" class="text-indigo-600 mr-2 text-lg"></ion-icon>
+                    <ion-icon name="star" class="text-indigo-600 mr-2 text-lg"></ion-icon>
                     <span class="capitalize tracking-wider leading-loose">Déconnexion</span>
                 </a>
             </li>

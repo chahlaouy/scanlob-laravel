@@ -38,13 +38,13 @@
 -->
 <section class="flex container mx-auto">
     <div class="w-full">
-        <section class="md:grid md:grid-cols-2 md:gap-8 xl:grid-cols-4 xl:gap-6 px-12">
+        <section class="grid grid-cols-3 gap-4 px-12">
 
             @foreach ($offers as $offer) 
-                <div id="card" class="overflow-hidden rounded-lg w-96">
+                <div id="card" class="overflow-hidden rounded-lg">
                     <div class="w-full relative z-0">
                         <div class="bg-gray-900 bg-opacity-50 w-full h-full absolute z-10 rounded-lg overflow-hidden">
-                            <div
+                            {{-- <div
                                 class="flex justify-center items-center py-4 text-gray-600 text-sm bg-opacity-75 text-center rounded-t-lg">
                                 <div class="flex-1 flex items-center justify-center">
                                     <div
@@ -65,7 +65,7 @@
                                         <ion-icon name="list-outline" class="text-xl"></ion-icon>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="absolute bottom-0 left-0 w-full z-0">
                                 <div class="flex items-center text-xs text-gray-100 ">
                                     <div class="px-1 py-2 ">
@@ -97,7 +97,9 @@
                             <div class="relative text-sm text-gray-500 pb-2">
                                 <p>{{$offer->description}}</p>
                                 <button
-                                    class="w-8 h-8 bg-red-400 rounded-full absolute z-0 bottom-8 right-0 outline-none"></button>
+                                    class="w-8 h-8 bg-red-400 rounded-full absolute z-0 bottom-8 right-0 outline-none">
+                                    <a href="/offre/{{$offer->id}}"><span class="opacity-0">go</span></a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -110,10 +112,10 @@
         <h1 class="px-2 uppercase tracking-wide leading-loose text-gray-800">Catégories</h1>
         <ul class="w-full text-indigo-600 mt-6">
             <li class="py-2 px-2 bg-indigo-600 text-gray-100 rounded"> 
-                Offre Business
+                Carte Visite
             </li>
             <li class="py-2 px-2"> 
-                Offre Premium
+                Accessoire
             </li>
         </ul>
     </aside>
