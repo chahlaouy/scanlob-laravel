@@ -26,6 +26,24 @@ class UserAuthController extends Controller
 
         return view('auth.qr-code');
     }
+    function verifyCode(Request $request){
+
+        $request->validate([
+            'qrcode' => 'required | max:5 | min:5'
+        ]);
+
+        $qrcode = Qrcode::where('qrcode_string', '=', $request->qrcode)->first();
+
+        if($qrcode){
+            if($qrcode->isGenerated){
+                $request->session()->put('qrcode', $request->qrcode);
+                return view('auth.register')->with('success', "Qr code Verifiée entrer vos Information pour terminer l'inscription ");
+            }
+        }else{
+            return view('auth.register')->with('fail', "Qr code non Verifiée Vous pouvez vous inscrire maintenant et en obtenir un plus tard");
+        }
+
+    }
     function createUser(Request $request){
         
         //Validating request

@@ -36,10 +36,11 @@ Route::get('/contact', [HomeController::class, 'products'])->name('contact');
 
 // User Routes
 
-Route::get('/qr-code', [UserAuthController::class, 'qrCode'])->name('user.qr-code');
+Route::get('/qr-code', [UserAuthController::class, 'qrCode'])->name('qr-code');
 Route::post('/create', [UserAuthController::class, 'createUser'])->name('user.create');
 Route::post('/check', [UserAuthController::class, 'check'])->name('user.check');
 Route::post('/ajouter-avis/{id}', [ReviewController::class, 'createReview']);
+Route::post('/verify-qr-ceode', [UserAuthController::class, 'verifyCode'])->name('verify.qr-code');
 
 // Admin Routes
 
@@ -54,7 +55,7 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::post('/ajouter-info', [UserController::class, 'addUserInfo'])->name('user.addInfo');
     Route::get('/commandes', [UserController::class, 'commands'])->name('user.commands');
     Route::get('/cartes', [UserController::class, 'cards'])->name('user.cards');
-    Route::get('/qr-code', [UserController::class, 'qrCode'])->name('user.qr-code');
+    Route::get('/mon-qr-code', [UserController::class, 'qrCode'])->name('user.qr-code');
     Route::get('/mes-avis', [UserController::class, 'reviews'])->name('user.reviews');
     Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('user.logout');
 

@@ -17,23 +17,24 @@
     -->
     <section class="flex items-center justify-center h-screen w-full text-gray-600">
         <div class="bg-white shadow-2xl rounded-xl w-96 p-8">
+            
+            <div>
+                @if (isset($success))
+                <div class="w-full px-4 py-2 my-4 bg-green-300 rounded text-center text-gray-500">
+                    <h1>{{$success}}</h1>
+                </div>
+                @endif
+                @if (isset($fail))
+                <div class="w-full px-4 py-2 my-4 bg-red-300 rounded text-white text-center text-gray-500">
+                    <h1>{{$fail}}</h1>
+                </div>
+                @endif
+                
+            </div>
+            <h1 class="text-center capitalize tracking-wide leading-loose text-2xl text-gray-800">Inscription</h1>
             <form action="{{route ('user.create')}}" method="POST">
                 @csrf
                 <div>
-                    <h1 class="text-center capitalize tracking-wide leading-loose text-2xl text-gray-800">Inscription</h1>
-                    <div>
-                        @if (Session::get('success'))
-                            <div class="w-full px-4 py-2 my-4 bg-green-300 rounded text-center text-gray-500">
-                                <h1>{{Session::get('success')}}</h1>
-                            </div>
-                        @endif
-                        @if (Session::get('fail'))
-                            <div class="w-full px-4 py-2 my-4 bg-red-300 rounded text-white text-center text-gray-500">
-                                {{Session::get('fail')}}
-                            </div>
-                        @endif
-                        
-                    </div>
                     <input type="text" class="w-full px-4 py-2 my-4 bg-red-200 rounded outline-white" placeholder="Nom Prénom" name="username" value="{{ old('username') }}">
                     <span class="block text-red-400">
                         @error('username')

@@ -90,7 +90,7 @@
                         </div>
                     </div>  
                 @else   
-                    <a href="{{route('user.qr-code')}}" class="bg-indigo-600 mr-2 px-4 py-2 text-gray-100 rounded-lg shadow-xl block">
+                    <a href="{{route('qr-code')}}" class="bg-indigo-600 mr-2 px-4 py-2 text-gray-100 rounded-lg shadow-xl block">
                         <ion-icon name="qr-code-outline" class="text-3xl"></ion-icon>
                         <span class="block text-sm">premier connexion</span>
                     </a>
