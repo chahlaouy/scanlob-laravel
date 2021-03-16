@@ -37,10 +37,10 @@ class UserAuthController extends Controller
         if($qrcode){
             if($qrcode->isGenerated){
                 $request->session()->put('qrcode', $request->qrcode);
-                return view('auth.register')->with('success', "Qr code Verifiée entrer vos Information pour terminer l'inscription ");
+                return redirect('/inscription')->with('success', "Qr code Verifiée entrer vos Information pour terminer l'inscription ");
             }
         }else{
-            return view('auth.register')->with('fail', "Qr code non Verifiée Vous pouvez vous inscrire maintenant et en obtenir un plus tard");
+            return redirect('/inscription')->with('fail', "Qr code non Verifiée Vous pouvez vous inscrire maintenant et en obtenir un plus tard");
         }
 
     }
@@ -50,19 +50,26 @@ class UserAuthController extends Controller
         $request->validate([
             'username'  =>  'required',
             'email'  =>  'required | email | unique:users',
-            'password'  =>  'required | min:8',
+            'password'  =>  'required | min:4 | max:12',
             'confirm-password'  =>  'required | min:4 | max:12',
         ]);
 
         // if form validated successfully
-
-        $qrcode = new Qrcode;
-        $qrcode_string = rand(11111, 99999);
         
-        $qrcode->qrcode_string = $qrcode_string;
+        if(session()->has('qrcode')){
+            $qrcode = Qrcode::where('qrcode_string', '=', session('qrcode'))->first();
+            session()->pull('qrcode');
+            $qrcode->verified = true;
+        }else{
 
-        $qrcode->qrcode_url = '';
-        $qrcode->verified = false;
+            $qrcode = new Qrcode;
+            $qrcode_string = rand(11111, 99999);
+            $qrcode->qrcode_string = $qrcode_string;
+            $qrcode->qrcode_url = '';
+            $qrcode->isGenerated = false;
+        }
+        
+        
 
         $query2 = $qrcode->save();
 

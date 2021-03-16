@@ -13,6 +13,7 @@ use App\Http\Controllers\OffersController;
 use App\Http\Controllers\CommandsController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,11 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::get('/mon-qr-code', [UserController::class, 'qrCode'])->name('user.qr-code');
     Route::get('/mes-avis', [UserController::class, 'reviews'])->name('user.reviews');
     Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('user.logout');
+
+    // Cart controller
+    Route::get('/checkout', [CartController::class, 'checkout']);
+    Route::post('/checkout', [CartController::class, 'afterpayment'])->name('checkout.credit-card');
+
 
     
     // Routes for admin

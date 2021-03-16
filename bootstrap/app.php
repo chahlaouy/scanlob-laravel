@@ -51,5 +51,9 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+// $app->bind('path.public', function() {
+//     return realpath(__DIR__.'/../../www');
+// });
+
 
 return $app;

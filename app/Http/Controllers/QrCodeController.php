@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Qrcode;
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Support\Facades\DB;
 
 
@@ -14,7 +14,7 @@ class QrCodeController extends Controller
     function index(){
         
         $data   =   [
-            'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first(),
+            'loggedUserInfo'  =>  Admin::where('id', '=', session('loggedUserId'))->first(),
         ];
 
         return view('admin.qr-code', $data);
@@ -23,7 +23,7 @@ class QrCodeController extends Controller
         $qrCodes = DB::table('qrcodes')->get();
         
         $data   =   [
-            'loggedUserInfo'  =>  User::where('id', '=', session('loggedUserId'))->first(),
+            'loggedUserInfo'  =>  Admin::where('id', '=', session('loggedUserId'))->first(),
             'qrCodes'         =>  $qrCodes,
         ];
         return view('admin.qr-list', $data);
@@ -38,6 +38,7 @@ class QrCodeController extends Controller
 
         $qrcode->qrcode_url = '';
         $qrcode->verified = false;
+        $qrcode->isGenerated = true;
 
         $status = $qrcode->save();
 
