@@ -72,12 +72,9 @@
             @endforeach
         </div>
         <div class="flex-1 px-6">
-            {{-- @php
-                $total = 5;
-            @endphp --}}
+            
             <div class="bg-white shadow-2xl rounded-2xl mt-5 p-8">
                 <h1 class="text-3xl mb-16">Liste Des Produits</h1>
-                {{$total = 0}}
                 @foreach ($items as $item)
                     <div class="flex items-center justify-between my-2">
                         <div class="text-lg text-gray-700">
@@ -85,10 +82,7 @@
                         </div>
                         <div class="font-bold text-lg">
                             {{$item->quantity * $item->price}}€
-                            {{$total = $total + $item->quatity * $item->price}}
-                            {{-- @php
-                                $total = $total + $item->quatity * $item->price
-                            @endphp --}}
+                            
                         </div>
                     </div>
                     <hr>
@@ -99,9 +93,7 @@
                     </div>
                     <div>
                         {{$total}}€
-                        {{-- @php
-                            echo $total . '€';
-                        @endphp --}}
+                        
                     </div>
                 </div>
             </div>

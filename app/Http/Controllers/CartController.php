@@ -40,9 +40,18 @@ class CartController extends Controller
 
         $userID = session('loggedUserId');
         $items = \Cart::session($userID)->getContent();
+
+        $total = 0;
+
+        // dd($items);
+        foreach($items as $item) {
+            $total = $total + (intval($item->quantity) * $item->price);
+        }
+
         $data   =   [
             'loggedUserInfo'  =>  User::where('id', '=', $userID)->first(),
-            'items' => $items
+            'items' => $items,
+            'total' => $total
         ];
         return view('cart-items',  $data);
     }

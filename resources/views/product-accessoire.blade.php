@@ -94,7 +94,7 @@
                                 </div>
                                 <h1 class="flex items-start text-right">
                                     <div class="font-bold text-xl py-3">{{$offer->price}}</div>
-                                    <span class="text-xs text-gray-600 pt-3">/euro</span>
+                                    <span class="text-xs text-gray-600 pt-3">€</span>
                                 </h1>
                             </div>
                             <div class="relative text-sm text-gray-500 pb-2">
