@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('title')
-    visit card
+    @isset($offer)
+        {{$offer->title}}
+    @endisset
 @endsection
 
 @section('content')
@@ -9,7 +11,7 @@
     <section class="container mx-auto">
         
         <div class="flex">
-            <div class="flex-1 p-24">
+            <div class="flex-1 p-12">
                 <div id="card" class="overflow-hidden rounded-lg">
                     <div class="w-full relative z-0">
                         <div class="bg-gray-900 bg-opacity-10 w-full h-full absolute z-10 rounded-lg overflow-hidden">
@@ -28,14 +30,14 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="{{asset('assets/images/') . '/' . $offer->img_url }}" alt="" class="w-full h-96 object-filt rounded-t-lg shadow-lg" />
+                        <img src="{{asset('assets/images/') . '/' . $offer->img_url }}" alt="" class="w-full h-96 object-cover rounded-t-lg shadow-lg" />
                     </div>
                     <div class="bg-white shadow-lg rounded-b-lg">
                         <div class="px-6">
                             <div class="flex justify-between items-center">
                                 <h1 class="text-2xl font-bold my-4">{{ $offer->title }}</h1>
                                 <h1 class="flex items-start text-right">
-                                    <div class="font-bold text-xl py-3">{{ $offer->title }}</div>
+                                    <div class="font-bold text-xl py-3">{{ $offer->price }}</div>
                                     <span class="text-xs text-gray-600 pt-3">/euro</span>
                                 </h1>
                             </div>
@@ -49,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="flex-1 p-24">
+            <div class="flex-1 p-12">
                 <h1 class="tracking-wider leading-loose text-lg uppercase text-indigo-600">{{ $offer->category }}</h1>
                 <h1 class="text-4xl text-gray-800">
                     {{ $offer->title }}
@@ -60,15 +62,23 @@
                     {{ $offer->description }}
                 </p>
                 <div class="mt-10">
-                    {{-- <form action=""> --}}
-                        <div class="flex items-center justify-between">
+                    <form action="/ajouter-offre-panier/{{$offer->id}}" method="POST">
+                        @csrf
+                        <div class="text-xs tracking-wide leading-loose text-gray-700">
+                            <h1 class="font-bold text-red-400">NB</h1>
+                            <p>Une quantité qui dépasse 1000 copie design et livraison seront gratuit</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-5">
                             <h1 class="text-2xl text-gray-800">
                                 Qauntite
                             </h1>
                             <input name="quantity" type="number" class="px-2 py-2 w-32 bg-red-100 rounded-lg border-2 border-indigo-600" placeholder="1000">
                         </div>
-                        <button class="bg-indigo-600 rounded-lg px-4 py-2 text-gray-100 mt-5">Commander</button>
-                    {{-- </form> --}}
+                        <div class="flex items-center justify-end mt-12">
+
+                            <button type="submit" class="bg-indigo-600 rounded-lg py-2 text-gray-100 w-56">Commander</button>
+                        </div>
+                    </form>
                 </div>
 
             </div>

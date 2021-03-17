@@ -20,12 +20,15 @@
         </div>
 
         <div class="flex-1 max-w-2xl">
-            <h1 class="tracking-wider leading-loose text-lg uppercase text-indigo-600">Offre Business</h1>
+            <h1 class="tracking-wider leading-loose text-lg uppercase text-indigo-600">Des Accessoires</h1>
             <h1 class="text-7xl text-gray-800">
-                Pour un marketing intelligent
+                Simplifier votre vie
             </h1>
             <p class="tracking-wide leading-loose text-sm text-gray-700 my-4">
-                Nos produits dynamique vous permettent d'organiser,de développer et de gérer vos campagnes marketing en détails et de manière rentable. Lorsqu'un code dynamique est scanné, notre système détecte le lieu et le moment du scan ainsi que l'appareil utilisé. Ces informations détaillées vous permettent de mesurer le succès de vos compagnes promotionnelles et , le cas échéant, de les optimiser.
+                Des accessoires qui permet de simplifier votre vie
+                Profiter de l'offre de livraison gratuite pour votre 1er commande 
+                N'hésitez pas à nous contacter pour plus d'informations,
+                À très bientôt !
             </p>
 
         </div>
@@ -111,14 +114,22 @@
     <aside class="w-96  px-4 text-sm" style="background: #e7eeed;">
         <h1 class="px-2 uppercase tracking-wide leading-loose text-gray-800">Catégories</h1>
         <ul class="w-full text-indigo-600 mt-6">
-            <li class="py-2 px-2 bg-indigo-600 text-gray-100 rounded"> 
-                Tous les Catégories
+            <li class="py-2 px-2 rounded">
+                <a href="{{route('products')}}">
+                    Tous les Catégories
+                </a>
             </li>
-            <li class="py-2 px-2 rounded"> 
-                Carte Visite
+            <li class="py-2 px-2 rounded">
+                <a href="{{route('visit-cards')}}">
+                    Carte Visite
+                </a>
+                
             </li>
-            <li class="py-2 px-2"> 
-                Accessoire
+            <li class="py-2 px-2 bg-indigo-600 text-gray-100">
+                <a href="{{route('accessoire')}}">
+                    Accessoire
+                </a>
+                
             </li>
         </ul>
     </aside>

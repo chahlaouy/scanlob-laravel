@@ -43,6 +43,36 @@ class HomeController extends Controller
         ];
         return view('product-list', $data);
     }
+    function getCart(){
+        $offers = Offers::where('category', '=', 'visit-card')->get();
+        if(session()->has('loggedUserId')){
+            $user   =   User::where('id', '=', session('loggedUserId'))->first();
+            $data   =   [
+                'loggedUserInfo'  =>  $user,
+                'offers'    => $offers
+            ];
+            return view('product-visit-card', $data);
+        }
+        $data   =   [
+            'offers'    => $offers
+        ];
+        return view('product-visit-card', $data);
+    }
+    function getAccessoire(){
+        $offers = Offers::where('category', '=', 'accessoire')->get();
+        if(session()->has('loggedUserId')){
+            $user   =   User::where('id', '=', session('loggedUserId'))->first();
+            $data   =   [
+                'loggedUserInfo'  =>  $user,
+                'offers'    => $offers
+            ];
+            return view('product-accessoire', $data);
+        }
+        $data   =   [
+            'offers'    => $offers
+        ];
+        return view('product-accessoire', $data);
+    }
 
     function getOffer($id){
         /** get user */

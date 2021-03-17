@@ -111,14 +111,22 @@
     <aside class="w-96  px-4 text-sm" style="background: #e7eeed;">
         <h1 class="px-2 uppercase tracking-wide leading-loose text-gray-800">Catégories</h1>
         <ul class="w-full text-indigo-600 mt-6">
-            <li class="py-2 px-2 bg-indigo-600 text-gray-100 rounded"> 
-                Tous les Catégories
+            <li class="py-2 px-2 bg-indigo-600 text-gray-100 rounded">
+                <a href="{{route('products')}}">
+                    Tous les Catégories
+                </a>
             </li>
-            <li class="py-2 px-2 rounded"> 
-                Carte Visite
+            <li class="py-2 px-2 rounded">
+                <a href="{{route('visit-cards')}}">
+                    Carte Visite
+                </a>
+                
             </li>
-            <li class="py-2 px-2"> 
-                Accessoire
+            <li class="py-2 px-2">
+                <a href="{{route('accessoire')}}">
+                    Accessoire
+                </a>
+                
             </li>
         </ul>
     </aside>

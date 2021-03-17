@@ -13,6 +13,24 @@
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </head>
 <body>
+
+
+	<!-- 
+    *****************************
+    *       Section Cart        *
+    *****************************
+	-->
+
+    <div class="fixed bottom-0 right-0 p-16">
+        <div class="flex items-center justify-center w-56 h-56 rounded-full">
+            <div class="text-center">
+
+                <ion-icon name="cart" class="text-3xl"></ion-icon>
+                <p>Panier</p>
+            </div>
+        </div>
+    </div>
+
 	<!-- 
     *****************************
     *       Section Header      *
@@ -52,7 +70,7 @@
             </ul>
             <div class="w-96 text-gray-600 text-sm px-4" style="background: #e7eeed;">
                 <div class="relative text-sm flex items-center">
-                    <form action="{{route('search')}}" method="POST">
+                    <form action="{{route('search')}}" method="get">
                         @csrf
                         <input type="text" class="px-4 py-2 bg-gray-200 w-full rounded border border-gray-300" placeholder="Entrer qr-code" name="qrcode">
                         <button type="submit" class="absolute -ml-12 py-2 h-full bg-indigo-600 text-white px-4 rounded-r border border-indigo-600">
