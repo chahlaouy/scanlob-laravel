@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Nos Offres
+    Accessoire
 @endsection
 
 @section('content')

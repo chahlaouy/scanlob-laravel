@@ -29,6 +29,8 @@ use App\Http\Controllers\CartController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/nos-offres', [HomeController::class, 'products'])->name('products');
+Route::get('/nos-carte', [HomeController::class, 'getCart'])->name('visit-cards');
+Route::get('/nos-accessoire', [HomeController::class, 'getAccessoire'])->name('accessoires');
 Route::get('/offre/{id}', [HomeController::class, 'getOffer']);
 Route::post('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/profile/{id}', [HomeController::class, 'getProfile'])->name('profile');

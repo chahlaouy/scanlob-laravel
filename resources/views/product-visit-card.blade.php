@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Nos Offres
+    Carte visite
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex-1 max-w-2xl">
-            <h1 class="tracking-wider leading-loose text-lg uppercase text-indigo-600">Offre Business</h1>
+            <h1 class="tracking-wider leading-loose text-lg uppercase text-indigo-600">Carte Visite</h1>
             <h1 class="text-7xl text-gray-800">
                 Pour un marketing intelligent
             </h1>
