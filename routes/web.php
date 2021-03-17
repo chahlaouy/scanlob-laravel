@@ -63,6 +63,7 @@ Route::group(['middleware' => 'isLogged'], function(){
     Route::get('/deconnexion', [UserAuthController::class, 'logout'])->name('user.logout');
 
     // Cart controller
+    Route::post('/ajouter-au-panier', [CartController::class, 'addToCart'])->name('add-to-cart');
     Route::get('/checkout', [CartController::class, 'checkout']);
     Route::post('/checkout', [CartController::class, 'afterpayment'])->name('checkout.credit-card');
 

@@ -21,15 +21,14 @@
     *****************************
 	-->
 
-    <div class="fixed bottom-0 right-0 p-16">
-        <div class="flex items-center justify-center w-56 h-56 rounded-full">
+    {{-- <div class="fixed bottom-0 right-0 p-5">
+        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-indigo-600 text-gray-100">
             <div class="text-center">
-
                 <ion-icon name="cart" class="text-3xl"></ion-icon>
-                <p>Panier</p>
+                <p class="text-xs">Panier</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 	<!-- 
     *****************************
@@ -86,27 +85,34 @@
              </div>
             <div class="flex text-center">
                 @if (isset($loggedUserInfo))
-                    <div class="relative">
-                        <button class="bg-indigo-600 px-4 py-2 text-gray-100 rounded-lg shadow-xl text-center focus:outline-none" onclick="myFunction()" class="dropbtn-menu-profile">
-                            <ion-icon name="person" class="text-3xl"></ion-icon>
-                            <div class="flex items-center">
-                                <p class="text-sm mr-2">{{ $loggedUserInfo->username }}</p>
-                                <ion-icon name="chevron-down-circle-outline" class="text-lg"></ion-icon>
+                    <div class="flex items-center">
+
+                        <div class="relative mr-2">
+                            <button class="bg-indigo-600 px-4 py-2 text-gray-100 rounded-lg shadow-xl text-center focus:outline-none flex items-center" onclick="myFunction()" class="dropbtn-menu-profile">
+                                <ion-icon name="person" class="text-xl mr-2"></ion-icon>
+                                <div class="flex items-center">
+                                    <p class="text-sm mr-2">{{ $loggedUserInfo->username }}</p>
+                                    <ion-icon name="chevron-down-circle-outline" class="text-lg"></ion-icon>
+                                </div>
+                            </button>
+                            <div class="hidden absolute right-0 w-64 bg-white shadow text-left rounded text-gray-700" id="dropdown-menu-profile">
+                                <ul>
+                                    <li class="px-4 py-2  hover:bg-gray-300 flex items-center">
+                                        <ion-icon name="apps" class="mr-1"></ion-icon>
+                                        <a href="{{route('user.dashboard')}}">Dashboard</a>
+                                    </li>
+                                    <li class="px-4 py-2  hover:bg-gray-300 flex items-center">
+                                        <ion-icon name="log-out" class="mr-1"></ion-icon>
+                                        <a href="{{route('user.logout')}}">Déconnexion</a>
+                                    </li>
+                                </ul>
                             </div>
-                        </button>
-                        <div class="hidden absolute right-0 w-64 bg-white shadow text-left rounded text-gray-700" id="dropdown-menu-profile">
-                            <ul>
-                                <li class="px-4 py-2  hover:bg-gray-300 flex items-center">
-                                    <ion-icon name="apps" class="mr-1"></ion-icon>
-                                    <a href="{{route('user.dashboard')}}">Dashboard</a>
-                                </li>
-                                <li class="px-4 py-2  hover:bg-gray-300 flex items-center">
-                                    <ion-icon name="log-out" class="mr-1"></ion-icon>
-                                    <a href="{{route('user.logout')}}">Déconnexion</a>
-                                </li>
-                            </ul>
                         </div>
-                    </div>  
+                        <a href="{{route('user.login')}}" class="bg-gray-100 px-4 py-2 rounded-lg shadow-xl text-gray-700 text-center block flex items-center">
+                            <ion-icon name="cart" class="text-xl mr-2"></ion-icon>
+                            <span class="block text-sm">Panier</span>
+                        </a>
+                    </div>
                 @else   
                     <a href="{{route('qr-code')}}" class="bg-indigo-600 mr-2 px-4 py-2 text-gray-100 rounded-lg shadow-xl block">
                         <ion-icon name="qr-code-outline" class="text-3xl"></ion-icon>
