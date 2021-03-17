@@ -64,6 +64,8 @@ Route::group(['middleware' => 'isLogged'], function(){
 
     // Cart controller
     Route::post('/ajouter-au-panier', [CartController::class, 'addToCart'])->name('add-to-cart');
+    Route::get('/panier', [CartController::class, 'getCart'])->name('cart.items');
+    Route::get('/delete-item/{id}', [CartController::class, 'deleteCart'])->name('cart.delete');
     Route::get('/checkout', [CartController::class, 'checkout']);
     Route::post('/checkout', [CartController::class, 'afterpayment'])->name('checkout.credit-card');
 

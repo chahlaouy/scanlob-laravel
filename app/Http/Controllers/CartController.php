@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Offers;
+use App\Models\User;
 
 class CartController extends Controller
 {
@@ -27,7 +28,6 @@ class CartController extends Controller
                 'attributes' => array(),
                 'associatedModel' => $offer
             ));
-           
             return back()->with('success', "Offre Ajouter avec success");
 
         } else {
@@ -37,9 +37,25 @@ class CartController extends Controller
     }
     
     public function getCart(){
-        $items = \Cart::getContent();
 
-        return view('',  ['items', items]);
+        $userID = session('loggedUserId');
+        $items = \Cart::session($userID)->getContent();
+        $data   =   [
+            'loggedUserInfo'  =>  User::where('id', '=', $userID)->first(),
+            'items' => $items
+        ];
+        return view('cart-items',  $data);
+    }
+    public function deleteCart($id){
+
+        $userID = session('loggedUserId');
+        \Cart::session($userID)->remove($id);
+        $items = \Cart::session($userID)->getContent();
+        $data   =   [
+            'loggedUserInfo'  =>  User::where('id', '=', $userID)->first(),
+            'items' => $items
+        ];
+        return back()->with('success', 'Offre enléver avec succees');
     }
     public function checkout()
     {   
